@@ -1,5 +1,5 @@
 # minicurso-openmp-wscad-2017
-Material do Minicurso *"Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação"* apresentado no XVIII Simpósio em Sistemas Computacionais de Alto Desempenho, no período de 17-20 de outubro de 2017 - Campinas - São Paulo - Brasil
+Material do Minicurso *"Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação"* apresentado no **XVIII Simpósio em Sistemas Computacionais de Alto Desempenho -- WSCAD-SC 2017**, no período de 17-20 de outubro de 2017 - Campinas - São Paulo - Brasil
 
 ## Slides
 
