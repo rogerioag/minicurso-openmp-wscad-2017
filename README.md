@@ -13,5 +13,5 @@ Material do Minicurso *"Introdução à Programação Paralela com OpenMP: Além
 
 ## Contato
 
-* Rogério Gonçalves (rogerioag@utfpr.edu.br)
+* Rogério Aparecido Gonçalves (rogerioag@utfpr.edu.br)
 
