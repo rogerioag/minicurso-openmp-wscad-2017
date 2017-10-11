@@ -8,7 +8,7 @@ Material do Minicurso *"Introdução à Programação Paralela com OpenMP: Além
 
 ## Código dos Exemplos
 
-[Exemplos](src/)
+[[Exemplos]](src/)
 
 ## Contato
 
