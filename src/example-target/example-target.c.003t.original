@@ -1,0 +1,93 @@
+
+;; Function __bswap_32 (null)
+;; enabled by -tree-original
+
+
+{
+  return __builtin_bswap32 (__bsx);
+}
+
+
+;; Function __bswap_64 (null)
+;; enabled by -tree-original
+
+
+{
+  return (__uint64_t) __builtin_bswap64 (__bsx);
+}
+
+
+;; Function vecaddgpu (null)
+;; enabled by -tree-original
+
+
+{
+  #pragma omp target data if(n > 1024) map(from:*c [len: (sizetype) n * 4]) map(firstprivate:c [pointer assign, bias: 0]) map(to:*b [len: (sizetype) n * 4]) map(firstprivate:b [pointer assign, bias: 0]) map(to:*a [len: (sizetype) n * 4]) map(firstprivate:a [pointer assign, bias: 0])
+    {
+      {
+        #pragma omp target if(n > 1024)
+          {
+            {
+              #pragma omp parallel if(n > 1024)
+                {
+                  {
+                    {
+                      int i;
+
+                      #pragma omp for nowait
+                        {
+                                                    int i;
+                          for (i = 0; i < n;  ++i)
+                            {
+                              *(c + (sizetype) ((long unsigned int) i * 4)) = *(a + (sizetype) ((long unsigned int) i * 4)) + *(b + (sizetype) ((long unsigned int) i * 4))
+                            }
+                        }
+                    }
+                  }
+                }
+            }
+          }
+      }
+    }
+}
+
+
+;; Function init_array (null)
+;; enabled by -tree-original
+
+
+{
+  int i;
+
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Inicializando os arrays.\n");
+    int i;
+  i = 0;
+  goto <D.3604>;
+  <D.3603>:;
+  *(h_a + (sizetype) ((long unsigned int) i * 4)) = 5.0e-1;
+  *(h_b + (sizetype) ((long unsigned int) i * 4)) = 5.0e-1;
+  i++ ;
+  <D.3604>:;
+  if (i < n) goto <D.3603>; else goto <D.3605>;
+  <D.3605>:;
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int i;
+
+    int i;
+  n = atoi ((const char *) *(argv + 8));
+  h_a = (float *) malloc ((long unsigned int) n * 4);
+  h_b = (float *) malloc ((long unsigned int) n * 4);
+  h_c = (float *) malloc ((long unsigned int) n * 4);
+  init_array ();
+  vecaddgpu (h_c, h_a, h_b);
+  return 0;
+}
+return 0;
+

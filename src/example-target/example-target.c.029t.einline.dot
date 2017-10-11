@@ -1,0 +1,348 @@
+digraph "example-target.c.029t.einline" {
+overlap=false;
+subgraph "cluster_vecaddgpu._omp_fn.1" {
+	style="dashed";
+	color="black";
+	label="vecaddgpu._omp_fn.1 ()";
+	subgraph cluster_6_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_6_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|#\ i_3\ =\ PHI\ \<i_23(4),\ i_37(5)\>\l\
+|_24\ =\ (long\ unsigned\ int)\ i_3;\l\
+|_25\ =\ _24\ *\ 4;\l\
+|_26\ =\ a_9\ +\ _25;\l\
+|_27\ =\ *_26;\l\
+|_28\ =\ (long\ unsigned\ int)\ i_3;\l\
+|_29\ =\ _28\ *\ 4;\l\
+|_30\ =\ b_8\ +\ _29;\l\
+|_31\ =\ *_30;\l\
+|_32\ =\ (long\ unsigned\ int)\ i_3;\l\
+|_33\ =\ _32\ *\ 4;\l\
+|_34\ =\ c_10\ +\ _33;\l\
+|_35\ =\ _27\ +\ _31;\l\
+|*_34\ =\ _35;\l\
+|i_37\ =\ i_3\ +\ 1;\l\
+|if\ (i_37\ \<\ _22)\l\
+\ \ goto\ \<bb\ 5\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [0.00%]\l\
+}"];
+
+	}
+	fn_6_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_6_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_6_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|b_8\ =\ .omp_data_i_7(D)-\>b;\l\
+|a_9\ =\ .omp_data_i_7(D)-\>a;\l\
+|c_10\ =\ .omp_data_i_7(D)-\>c;\l\
+|n_11\ =\ .omp_data_i_7(D)-\>n;\l\
+|n.6_12\ =\ n_11;\l\
+|n.10_13\ =\ n.6_12;\l\
+|_14\ =\ omp_get_num_threads\ ();\l\
+|_15\ =\ omp_get_thread_num\ ();\l\
+|q.19_16\ =\ n.10_13\ /\ _14;\l\
+|tt.20_17\ =\ n.10_13\ %\ _14;\l\
+|if\ (_15\ \<\ tt.20_17)\l\
+\ \ goto\ \<bb\ 7\>;\ [25.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 3\>;\ [75.00%]\l\
+}"];
+
+	fn_6_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|#\ q.19_1\ =\ PHI\ \<q.19_19(7),\ q.19_16(2)\>\l\
+|#\ tt.20_2\ =\ PHI\ \<tt.20_18(7),\ tt.20_17(2)\>\l\
+|_20\ =\ q.19_1\ *\ _15;\l\
+|_21\ =\ _20\ +\ tt.20_2;\l\
+|_22\ =\ _21\ +\ q.19_1;\l\
+|if\ (_21\ \>=\ _22)\l\
+\ \ goto\ \<bb\ 6\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [0.00%]\l\
+}"];
+
+	fn_6_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|i_23\ =\ _21;\l\
+}"];
+
+	fn_6_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 6\>:\l\
+|return;\l\
+}"];
+
+	fn_6_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 7\>:\l\
+|tt.20_18\ =\ 0;\l\
+|q.19_19\ =\ q.19_16\ +\ 1;\l\
+goto\ \<bb\ 3\>;\ [100.00%]\l\
+}"];
+
+	fn_6_basic_block_0:s -> fn_6_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_6_basic_block_2:s -> fn_6_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true, label="[25%]"];
+	fn_6_basic_block_2:s -> fn_6_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[75%]"];
+	fn_6_basic_block_3:s -> fn_6_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_6_basic_block_3:s -> fn_6_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_6_basic_block_4:s -> fn_6_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_6_basic_block_5:s -> fn_6_basic_block_5:n [style="dotted,bold",color=blue,weight=10,constraint=false, label="[0%]"];
+	fn_6_basic_block_5:s -> fn_6_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_6_basic_block_6:s -> fn_6_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_6_basic_block_7:s -> fn_6_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_6_basic_block_0:s -> fn_6_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_vecaddgpu._omp_fn.0" {
+	style="dashed";
+	color="black";
+	label="vecaddgpu._omp_fn.0 ()";
+	fn_5_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_5_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_5_basic_block_17 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 17\>:\l\
+}"];
+
+	fn_5_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|_3\ =\ .omp_data_i_2(D)-\>n;\l\
+|_4\ =\ (unsigned\ long)\ _3;\l\
+|_5\ =\ (int)\ _4;\l\
+|n_6\ =\ _5;\l\
+|_7\ =\ .omp_data_i_2(D)-\>D.3637;\l\
+|b_8\ =\ _7;\l\
+|_9\ =\ .omp_data_i_2(D)-\>D.3639;\l\
+|a_10\ =\ _9;\l\
+|_11\ =\ .omp_data_i_2(D)-\>D.3641;\l\
+|c_12\ =\ _11;\l\
+|n.5_13\ =\ n_6;\l\
+|_14\ =\ n.5_13\ \>\ 1024;\l\
+|.omp_data_o.11.b\ =\ b_8;\l\
+|.omp_data_o.11.a\ =\ a_10;\l\
+|.omp_data_o.11.c\ =\ c_12;\l\
+|.omp_data_o.11.n\ =\ n_6;\l\
+}"];
+
+	fn_5_basic_block_16 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 16\>:\l\
+|_19\ =\ ~_14;\l\
+|_20\ =\ (unsigned\ int)\ _19;\l\
+|GOMP_parallel\ (vecaddgpu._omp_fn.1,\ &.omp_data_o.11,\ _20,\ 0);\l\
+}"];
+
+	fn_5_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 9\>:\l\
+|.omp_data_o.11\ =\{v\}\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_5_basic_block_0:s -> fn_5_basic_block_17:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_5_basic_block_17:s -> fn_5_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_5_basic_block_4:s -> fn_5_basic_block_16:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_5_basic_block_16:s -> fn_5_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_5_basic_block_9:s -> fn_5_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_5_basic_block_0:s -> fn_5_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_vecaddgpu" {
+	style="dashed";
+	color="black";
+	label="vecaddgpu ()";
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|n.0_1\ =\ n;\l\
+|_2\ =\ n.0_1\ \>\ 1024;\l\
+|n.1_3\ =\ n;\l\
+|_4\ =\ (sizetype)\ n.1_3;\l\
+|_5\ =\ _4\ *\ 4;\l\
+|n.2_6\ =\ n;\l\
+|_7\ =\ (sizetype)\ n.2_6;\l\
+|_8\ =\ _7\ *\ 4;\l\
+|n.3_9\ =\ n;\l\
+|_10\ =\ (sizetype)\ n.3_9;\l\
+|_11\ =\ _10\ *\ 4;\l\
+|.omp_data_arr.16.D.3630\ =\ c_15(D);\l\
+|.omp_data_arr.16.D.3631\ =\ b_17(D);\l\
+|.omp_data_arr.16.D.3632\ =\ a_19(D);\l\
+|.omp_data_sizes.17[0]\ =\ _5;\l\
+|.omp_data_sizes.17[1]\ =\ _8;\l\
+|.omp_data_sizes.17[2]\ =\ _11;\l\
+|_24\ =\ _5\ ==\ 0\ ?\ 527\ :\ 514;\l\
+|.omp_data_kinds.18[0]\ =\ _24;\l\
+|_26\ =\ _8\ ==\ 0\ ?\ 527\ :\ 513;\l\
+|.omp_data_kinds.18[1]\ =\ _26;\l\
+|_28\ =\ _11\ ==\ 0\ ?\ 527\ :\ 513;\l\
+|.omp_data_kinds.18[2]\ =\ _28;\l\
+|if\ (_2\ !=\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [0.00%]\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|_31\ =\ -1;\l\
+goto\ \<bb\ 5\>;\ [0.00%]\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|_30\ =\ -2;\l\
+}"];
+
+	fn_2_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|#\ _13\ =\ PHI\ \<_31(3),\ _30(4)\>\l\
+|GOMP_target_data_ext\ (_13,\ 3,\ &.omp_data_arr.16,\ &.omp_data_sizes.17,\ &.omp_data_kinds.18);\l\
+|n.4_33\ =\ n;\l\
+|_34\ =\ n.4_33\ \>\ 1024;\l\
+|.omp_data_arr.12.D.3637\ =\ b_17(D);\l\
+|.omp_data_arr.12.D.3639\ =\ a_19(D);\l\
+|.omp_data_arr.12.D.3641\ =\ c_15(D);\l\
+|n.15_38\ =\ n;\l\
+|_39\ =\ (unsigned\ long)\ n.15_38;\l\
+|_40\ =\ (int\ *)\ _39;\l\
+|.omp_data_arr.12.n\ =\ _40;\l\
+|if\ (_34\ !=\ 0)\l\
+\ \ goto\ \<bb\ 6\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [0.00%]\l\
+}"];
+
+	fn_2_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 6\>:\l\
+|_43\ =\ -1;\l\
+goto\ \<bb\ 8\>;\ [0.00%]\l\
+}"];
+
+	fn_2_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 7\>:\l\
+|_42\ =\ -2;\l\
+}"];
+
+	fn_2_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 8\>:\l\
+|#\ _12\ =\ PHI\ \<_43(6),\ _42(7)\>\l\
+|.omp_target_args.21[0]\ =\ 65792B;\l\
+|.omp_target_args.21[1]\ =\ 512B;\l\
+|.omp_target_args.21[2]\ =\ 0B;\l\
+|GOMP_target_ext\ (_12,\ vecaddgpu._omp_fn.0,\ 4,\ &.omp_data_arr.12,\ &.omp_data_sizes.13,\ &.omp_data_kinds.14,\ 0,\ 0B,\ &.omp_target_args.21);\l\
+|.omp_data_arr.12\ =\{v\}\ \{CLOBBER\};\l\
+|GOMP_target_end_data\ ();\l\
+|.omp_data_sizes.17\ =\{v\}\ \{CLOBBER\};\l\
+|.omp_data_kinds.18\ =\{v\}\ \{CLOBBER\};\l\
+|.omp_data_arr.16\ =\{v\}\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_3:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_4:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_5:s -> fn_2_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_5:s -> fn_2_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_6:s -> fn_2_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_7:s -> fn_2_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_8:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_init_array" {
+	style="dashed";
+	color="black";
+	label="init_array ()";
+	subgraph cluster_3_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_3_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|#\ i_11\ =\ PHI\ \<i_15(2),\ i_18(3)\>\l\
+|n.25_10\ =\ n;\l\
+|if\ (i_11\ \<\ n.25_10)\l\
+\ \ goto\ \<bb\ 3\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [0.00%]\l\
+}"];
+
+	fn_3_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|h_a.23_2\ =\ h_a;\l\
+|_3\ =\ (long\ unsigned\ int)\ i_11;\l\
+|_4\ =\ _3\ *\ 4;\l\
+|_5\ =\ h_a.23_2\ +\ _4;\l\
+|*_5\ =\ 5.0e-1;\l\
+|h_b.24_6\ =\ h_b;\l\
+|_7\ =\ (long\ unsigned\ int)\ i_11;\l\
+|_8\ =\ _7\ *\ 4;\l\
+|_9\ =\ h_b.24_6\ +\ _8;\l\
+|*_9\ =\ 5.0e-1;\l\
+|i_18\ =\ i_11\ +\ 1;\l\
+}"];
+
+	}
+	fn_3_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_3_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_3_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|stdout.22_1\ =\ stdout;\l\
+|fwrite\ (\"Inicializando\ os\ arrays.\\n\",\ 1,\ 25,\ stdout.22_1);\l\
+|i_15\ =\ 0;\l\
+goto\ \<bb\ 4\>;\ [0.00%]\l\
+}"];
+
+	fn_3_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|return;\l\
+}"];
+
+	fn_3_basic_block_0:s -> fn_3_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_2:s -> fn_3_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_3:s -> fn_3_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false, label="[0%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_5:s -> fn_3_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_0:s -> fn_3_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_4_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_4_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_4_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|_1\ =\ argv_19(D)\ +\ 8;\l\
+|_2\ =\ *_1;\l\
+|_3\ =\ atoi\ (_2);\l\
+|n\ =\ _3;\l\
+|n.26_4\ =\ n;\l\
+|_5\ =\ (long\ unsigned\ int)\ n.26_4;\l\
+|_6\ =\ _5\ *\ 4;\l\
+|_7\ =\ malloc\ (_6);\l\
+|h_a\ =\ _7;\l\
+|n.27_8\ =\ n;\l\
+|_9\ =\ (long\ unsigned\ int)\ n.27_8;\l\
+|_10\ =\ _9\ *\ 4;\l\
+|_11\ =\ malloc\ (_10);\l\
+|h_b\ =\ _11;\l\
+|n.28_12\ =\ n;\l\
+|_13\ =\ (long\ unsigned\ int)\ n.28_12;\l\
+|_14\ =\ _13\ *\ 4;\l\
+|_15\ =\ malloc\ (_14);\l\
+|h_c\ =\ _15;\l\
+|init_array\ ();\l\
+|h_b.29_16\ =\ h_b;\l\
+|h_a.30_17\ =\ h_a;\l\
+|h_c.31_18\ =\ h_c;\l\
+|vecaddgpu\ (h_c.31_18,\ h_a.30_17,\ h_b.29_16);\l\
+|_30\ =\ 0;\l\
+}"];
+
+	fn_4_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|\<L0\>\ [0.00%]:\l\
+|return\ _30;\l\
+}"];
+
+	fn_4_basic_block_0:s -> fn_4_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_4_basic_block_2:s -> fn_4_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_4_basic_block_3:s -> fn_4_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_4_basic_block_0:s -> fn_4_basic_block_1:n [style="invis",constraint=true];
+}
+}

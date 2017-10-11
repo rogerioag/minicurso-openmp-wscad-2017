@@ -1,0 +1,119 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2764, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_for
+    bb 4: GIMPLE_OMP_CONTINUE
+    bb 5: GIMPLE_OMP_RETURN
+bb 6: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 13
+Merging blocks 2 and 7
+main ()
+{
+  int D.2793;
+  int D.2791;
+  int D.2792;
+  int tt.2;
+  int q.1;
+  int D.2788;
+  int D.2787;
+  int i;
+  int i;
+  int id;
+  int D.2779;
+  int D.2778;
+  long int D.2777;
+  int D.2776;
+  int D.2773;
+  long int D.2772;
+  int D.2771;
+
+  <bb 2>:
+  D.2771 = pthread_self ();
+  D.2772 = (long int) D.2771;
+  D.2773 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Before parallel region...\n", D.2773, D.2772);
+  __builtin_GOMP_parallel_start (main._omp_fn.0, 0B, 4);
+  main._omp_fn.0 (0B);
+  __builtin_GOMP_parallel_end ();
+  D.2776 = pthread_self ();
+  D.2777 = (long int) D.2776;
+  D.2778 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: After parallel region...\n", D.2778, D.2777);
+  D.2779 = 0;
+
+<L0>:
+  return D.2779;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2781, cgraph_uid=6)
+
+main._omp_fn.0 (void * .omp_data_i)
+{
+  long int D.2804;
+  int D.2803;
+  int i;
+  int D.2801;
+  int D.2800;
+  int D.2799;
+  int tt.2;
+  int q.1;
+  int D.2796;
+  int D.2795;
+  int id;
+
+  <bb 12>:
+
+  <bb 3>:
+  id = omp_get_thread_num ();
+  D.2795 = __builtin_omp_get_num_threads ();
+  D.2796 = __builtin_omp_get_thread_num ();
+  q.1 = 16 / D.2795;
+  tt.2 = 16 % D.2795;
+  if (D.2796 < tt.2)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+  <bb 11>:
+  D.2799 = q.1 * D.2796;
+  D.2800 = D.2799 + tt.2;
+  D.2801 = D.2800 + q.1;
+  if (D.2800 >= D.2801)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 9>:
+  i = D.2800;
+
+  <bb 4>:
+  D.2803 = pthread_self ();
+  D.2804 = (long int) D.2803;
+  printf ("Thread[%d][%lu]: Working in %lu loop iteration...\n", id, D.2804, i);
+  i = i + 1;
+  if (i < D.2801)
+    goto <bb 4>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+
+  <bb 6>:
+  return;
+
+  <bb 10>:
+  tt.2 = 0;
+  q.1 = q.1 + 1;
+  goto <bb 11>;
+
+}
+
+

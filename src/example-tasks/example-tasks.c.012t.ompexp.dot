@@ -1,0 +1,58 @@
+digraph "example-tasks.c.012t.ompexp" {
+overlap=false;
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|if\ (argc\ \<=\ 1)\l\
+\ \ goto\ \<bb\ 3\>;\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|D.3562\ =\ *argv;\l\
+|stderr.0\ =\ stderr;\l\
+|fprintf\ (stderr.0,\ \"Uso:\ %s\ \<x\>\n\",\ D.3562);\l\
+|exit\ (0);\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|id\ =\ 0;\l\
+|D.3564\ =\ argv\ +\ 8;\l\
+|D.3565\ =\ *D.3564;\l\
+|x\ =\ atoi\ (D.3565);\l\
+|D.3566\ =\ pthread_self\ ();\l\
+|D.3567\ =\ (long\ int)\ D.3566;\l\
+|D.3568\ =\ omp_get_thread_num\ ();\l\
+|stdout.1\ =\ stdout;\l\
+|fprintf\ (stdout.1,\ \"Thread[%lu,%lu]:\ Antes\ da\ região\ paralela.\n\",\ D.3568,\ D.3567);\l\
+|.omp_data_o.15.x\ =\ x;\l\
+|__builtin_GOMP_parallel\ (main._omp_fn.0,\ &.omp_data_o.15,\ 8,\ 0);\l\
+|.omp_data_o.15\ =\ \{CLOBBER\};\l\
+|D.3596\ =\ pthread_self\ ();\l\
+|D.3597\ =\ (long\ int)\ D.3596;\l\
+|D.3598\ =\ omp_get_thread_num\ ();\l\
+|stdout.9\ =\ stdout;\l\
+|fprintf\ (stdout.9,\ \"Thread[%lu,%lu]:\ Depois\ da\ região\ paralela.\n\",\ D.3598,\ D.3597);\l\
+|D.3600\ =\ 0;\l\
+}"];
+
+	fn_2_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|\<L4\>:\l\
+|return\ D.3600;\l\
+}"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_4:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_5:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+}

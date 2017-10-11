@@ -1,0 +1,280 @@
+
+;; Function func._omp_fn.0 (func._omp_fn.0, funcdef_no=4, decl_uid=3576, cgraph_uid=4, symbol_order=4)
+
+func._omp_fn.0 (struct  & restrict .omp_data_i)
+{
+  struct _IO_FILE * stdout.1;
+  int D.3599;
+  long int D.3598;
+  long unsigned int D.3597;
+  int j;
+  int i;
+  int D.3594;
+  int D.3593;
+  long int D.3592;
+  long int D.3591;
+  long int _7;
+  long int _8;
+  int _9;
+  int _10;
+  long unsigned int _13;
+  long int _14;
+  int _16;
+  struct _IO_FILE * stdout.1_17;
+
+  <bb 15>:
+
+  <bb 4>:
+  _7 = .omp_data_i_6(D)->D.3579;
+  _8 = .omp_data_i_6(D)->D.3581;
+  _9 = (int) _7;
+  _10 = (int) _8;
+  i_11 = _9;
+
+  <bb 5>:
+  # i_1 = PHI <i_11(4), i_20(8)>
+  j_12 = 0;
+
+  <bb 7>:
+  # j_2 = PHI <j_12(5), j_19(6)>
+  if (j_2 < i_1)
+    goto <bb 6>;
+  else
+    goto <bb 8>;
+
+  <bb 8>:
+  i_20 = i_1 + 1;
+  if (i_20 < _10)
+    goto <bb 5>;
+  else
+    goto <bb 9>;
+
+  <bb 9>:
+
+  <bb 10>:
+  return;
+
+  <bb 6>:
+  _13 = pthread_self ();
+  _14 = (long int) _13;
+  _16 = omp_get_thread_num ();
+  stdout.1_17 = stdout;
+  fprintf (stdout.1_17, "Thread[%lu,%lu]: Trabalhando na iteração (%d,%d).\n", _16, _14, i_1, j_2);
+  j_19 = j_2 + 1;
+  goto <bb 7>;
+
+}
+
+
+
+;; Function main._omp_fn.2 (main._omp_fn.2, funcdef_no=6, decl_uid=3631, cgraph_uid=10, symbol_order=11)
+
+main._omp_fn.2 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.6;
+  int D.3648;
+  long int D.3647;
+  long unsigned int D.3646;
+  long unsigned int _1;
+  long int _2;
+  int _5;
+  struct _IO_FILE * stdout.6_6;
+
+  <bb 19>:
+
+  <bb 7>:
+  _1 = pthread_self ();
+  _2 = (long int) _1;
+  _5 = omp_get_thread_num ();
+  stdout.6_6 = stdout;
+  fprintf (stdout.6_6, "Thread[%lu,%lu]: Trabalhando na task avulsa.\n", _5, _2);
+  return;
+
+}
+
+
+
+;; Function main._omp_fn.1 (main._omp_fn.1, funcdef_no=5, decl_uid=3626, cgraph_uid=9, symbol_order=10)
+
+main._omp_fn.1 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.5;
+  long int D.3654;
+  int D.3653;
+  long int D.3652;
+  long unsigned int D.3651;
+  _Bool D.3650;
+  _Bool _4;
+  long unsigned int _5;
+  long int _6;
+  int _8;
+  long int _9;
+  struct _IO_FILE * stdout.5_10;
+
+  <bb 21>:
+
+  <bb 3>:
+
+  <bb 4>:
+  _4 = __builtin_GOMP_single_start ();
+  if (_4 == 1)
+    goto <bb 5>;
+  else
+    goto <bb 13>;
+
+  <bb 13>:
+
+  <bb 14>:
+  return;
+
+  <bb 5>:
+  _5 = pthread_self ();
+  _6 = (long int) _5;
+  _8 = omp_get_thread_num ();
+  _9 = (long int) _8;
+  stdout.5_10 = stdout;
+  fprintf (stdout.5_10, "  Thread[%lu,%lu]: Before tasks.\n", _9, _6);
+
+  <bb 6>:
+  __builtin_GOMP_taskgroup_start ();
+
+  <bb 20>:
+  __builtin_GOMP_task (main._omp_fn.2, 0B, 0B, 0, 1, 1, 0, 0B, 0);
+
+  <bb 8>:
+
+  <bb 9>:
+
+  <bb 18>:
+  __builtin_GOMP_task (main._omp_fn.3, 0B, 0B, 0, 1, 1, 0, 0B, 0);
+
+  <bb 11>:
+
+  <bb 12>:
+  __builtin_GOMP_taskgroup_end ();
+  goto <bb 13>;
+
+}
+
+
+
+;; Function func (func, funcdef_no=2, decl_uid=3553, cgraph_uid=2, symbol_order=2)
+
+func ()
+{
+  int D.3590;
+  int D.3589;
+  struct _IO_FILE * stdout.1;
+  int D.3571;
+  long int D.3570;
+  long unsigned int D.3569;
+  int j;
+  int i;
+  struct _IO_FILE * stdout.0;
+  int D.3567;
+  long int D.3566;
+  long unsigned int D.3565;
+  struct  .omp_data_o.3;
+  long int D.3574;
+  long int D.3573;
+  long unsigned int _1;
+  long int _2;
+  int _5;
+  struct _IO_FILE * stdout.0_6;
+  long int _8;
+  long int _9;
+
+  <bb 2>:
+  _1 = pthread_self ();
+  _2 = (long int) _1;
+  _5 = omp_get_thread_num ();
+  stdout.0_6 = stdout;
+  fprintf (stdout.0_6, "Thread[%lu,%lu]: taskloop...\n", _5, _2);
+  _8 = 0;
+  _9 = 16;
+  __builtin_GOMP_taskloop (func._omp_fn.0, &.omp_data_o.3, 0B, 16, 8, 1280, 8, 0, _8, _9, 1);
+  .omp_data_o.3 ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function main._omp_fn.3 (main._omp_fn.3, funcdef_no=7, decl_uid=3635, cgraph_uid=11, symbol_order=12)
+
+main._omp_fn.3 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.7;
+  int D.3644;
+  long int D.3643;
+  long unsigned int D.3642;
+  long unsigned int _1;
+  long int _2;
+  int _5;
+  struct _IO_FILE * stdout.7_6;
+
+  <bb 17>:
+
+  <bb 10>:
+  _1 = pthread_self ();
+  _2 = (long int) _1;
+  _5 = omp_get_thread_num ();
+  stdout.7_6 = stdout;
+  fprintf (stdout.7_6, "Thread[%lu,%lu]: Trabalhando na task func().\n", _5, _2);
+  func ();
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=3, decl_uid=3562, cgraph_uid=3, symbol_order=3)
+
+main (int argc, char * * argv)
+{
+  _Bool D.3640;
+  int D.3624;
+  struct _IO_FILE * stdout.8;
+  long int D.3622;
+  int D.3621;
+  long int D.3620;
+  long unsigned int D.3619;
+  struct _IO_FILE * stdout.4;
+  long int D.3604;
+  int D.3603;
+  long int D.3602;
+  long unsigned int D.3601;
+  long unsigned int _1;
+  long int _2;
+  int _5;
+  long int _6;
+  struct _IO_FILE * stdout.4_7;
+  long unsigned int _10;
+  long int _11;
+  int _13;
+  long int _14;
+  struct _IO_FILE * stdout.8_15;
+  int _17;
+
+  <bb 2>:
+  _1 = pthread_self ();
+  _2 = (long int) _1;
+  _5 = omp_get_thread_num ();
+  _6 = (long int) _5;
+  stdout.4_7 = stdout;
+  fprintf (stdout.4_7, "Thread[%lu,%lu]: Before parallel region.\n", _6, _2);
+  __builtin_GOMP_parallel (main._omp_fn.1, 0B, 4, 0);
+  _10 = pthread_self ();
+  _11 = (long int) _10;
+  _13 = omp_get_thread_num ();
+  _14 = (long int) _13;
+  stdout.8_15 = stdout;
+  fprintf (stdout.8_15, "Thread[%lu,%lu]: After parallel region.\n", _14, _11);
+  _17 = 0;
+
+<L2>:
+  return _17;
+
+}
+
+

@@ -1,0 +1,200 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2688, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_sections
+        bb 5: gimple_omp_section
+        bb 9: GIMPLE_OMP_RETURN
+        bb 10: gimple_omp_section
+        bb 14: GIMPLE_OMP_RETURN
+        bb 16: gimple_omp_atomic_load
+        bb 17: GIMPLE_OMP_RETURN
+    bb 15: GIMPLE_OMP_CONTINUE
+    bb 18: GIMPLE_OMP_RETURN
+bb 19: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 24
+Merging blocks 2 and 20
+main (int argc, char * * argv)
+{
+  unsigned int sum.8;
+  int sum;
+  int D.2749;
+  int * D.2748;
+  int D.2747;
+  int sum;
+  int id;
+  int i;
+  int D.2722;
+  struct _IO_FILE * stdout.4;
+  int D.2720;
+  long int D.2719;
+  int D.2718;
+  struct _IO_FILE * stdout.3;
+  int D.2716;
+  long int D.2715;
+  int D.2714;
+  struct _IO_FILE * stdout.0;
+  int D.2706;
+  long int D.2705;
+  int D.2704;
+  unsigned int .section.6;
+  struct .omp_data_s.5 .omp_data_o.7;
+  int D.2746;
+  int D.2744;
+  int D.2745;
+  int D.2743;
+  int D.2742;
+  int D.2740;
+  int D.2741;
+  int D.2739;
+
+  <bb 2>:
+  sum = 0;
+  D.2704 = pthread_self ();
+  D.2705 = (long int) D.2704;
+  D.2706 = omp_get_thread_num ();
+  stdout.0 = stdout;
+  fprintf (stdout.0, "Thread[%d][%lu]: Antes da Região Paralela.\n", D.2706, D.2705);
+  .omp_data_o.7.i = i;
+  .omp_data_o.7.sum = sum;
+  __builtin_GOMP_parallel_start (main._omp_fn.0, &.omp_data_o.7, 8);
+  main._omp_fn.0 (&.omp_data_o.7);
+  __builtin_GOMP_parallel_end ();
+  i = .omp_data_o.7.i;
+  sum = .omp_data_o.7.sum;
+  D.2714 = pthread_self ();
+  D.2715 = (long int) D.2714;
+  D.2716 = omp_get_thread_num ();
+  stdout.3 = stdout;
+  fprintf (stdout.3, "Thread[%d][%lu]: Depois da Região Paralela.\n", D.2716, D.2715);
+  D.2718 = pthread_self ();
+  D.2719 = (long int) D.2718;
+  D.2720 = omp_get_thread_num ();
+  stdout.4 = stdout;
+  fprintf (stdout.4, "Thread[%d][%lu]: sum: %d\n", D.2720, D.2719, sum);
+  D.2722 = 0;
+
+<L6>:
+  return D.2722;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2724, cgraph_uid=6)
+
+main._omp_fn.0 (struct .omp_data_s.5 * .omp_data_i)
+{
+  int sum [value-expr: .omp_data_i->sum];
+  int i [value-expr: .omp_data_i->i];
+  int D.2776;
+  int D.2775;
+  int D.2774;
+  int D.2773;
+  struct _IO_FILE * stdout.1;
+  long int D.2771;
+  int D.2770;
+  int D.2769;
+  int D.2768;
+  int D.2767;
+  int D.2766;
+  struct _IO_FILE * stdout.2;
+  long int D.2764;
+  int D.2763;
+  unsigned int sum.8;
+  int * D.2761;
+  unsigned int .section.6;
+  int sum;
+  int id;
+
+  <bb 23>:
+
+  <bb 3>:
+  id = omp_get_thread_num ();
+  sum = 0;
+  .section.6 = __builtin_GOMP_sections_start (2);
+
+  <bb 4>:
+  switch (.section.6) <default: <L10>, case 0: <L7>, case 1: <L8>, case 2: <L9>>
+
+<L10>:
+  __builtin_trap ();
+
+<L7>:
+  D.2761 = &.omp_data_i->sum;
+  sum.8 = (unsigned int) sum;
+  __atomic_fetch_add_4 (D.2761, sum.8, 0);
+
+  <bb 17>:
+
+  <bb 18>:
+  __builtin_GOMP_sections_end_nowait ();
+
+  <bb 19>:
+  return;
+
+  <bb 15>:
+  .section.6 = __builtin_GOMP_sections_next ();
+  goto <bb 4>;
+
+<L9>:
+
+  <bb 11>:
+  D.2763 = pthread_self ();
+  D.2764 = (long int) D.2763;
+  stdout.2 = stdout;
+  fprintf (stdout.2, "   Thread[%lu,%lu]: Trabalhando na seção 2.\n", id, D.2764);
+  .omp_data_i->i = 0;
+
+  <bb 13>:
+  D.2766 = .omp_data_i->i;
+  if (D.2766 <= 1023)
+    goto <bb 12>;
+  else
+    goto <bb 14>;
+
+  <bb 14>:
+  goto <bb 15>;
+
+  <bb 12>:
+  D.2767 = .omp_data_i->i;
+  sum = sum + D.2767;
+  D.2768 = .omp_data_i->i;
+  D.2769 = D.2768 + 1;
+  .omp_data_i->i = D.2769;
+  goto <bb 13>;
+
+<L8>:
+
+  <bb 6>:
+  D.2770 = pthread_self ();
+  D.2771 = (long int) D.2770;
+  stdout.1 = stdout;
+  fprintf (stdout.1, "   Thread[%lu,%lu]: Trabalhando na seção 1.\n", id, D.2771);
+  .omp_data_i->i = 0;
+
+  <bb 8>:
+  D.2773 = .omp_data_i->i;
+  if (D.2773 <= 1023)
+    goto <bb 7>;
+  else
+    goto <bb 9>;
+
+  <bb 9>:
+  goto <bb 15>;
+
+  <bb 7>:
+  D.2774 = .omp_data_i->i;
+  sum = sum + D.2774;
+  D.2775 = .omp_data_i->i;
+  D.2776 = D.2775 + 1;
+  .omp_data_i->i = D.2776;
+  goto <bb 8>;
+
+}
+
+

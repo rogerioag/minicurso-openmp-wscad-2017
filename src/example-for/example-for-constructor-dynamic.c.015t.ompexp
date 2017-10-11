@@ -1,0 +1,113 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2764, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_for
+    bb 4: GIMPLE_OMP_CONTINUE
+    bb 5: GIMPLE_OMP_RETURN
+bb 6: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 12
+Merging blocks 2 and 7
+main ()
+{
+  _Bool D.2793;
+  long int .iend0.4;
+  int D.2792;
+  long int .istart0.3;
+  _Bool D.2789;
+  long int .iend0.2;
+  long int .istart0.1;
+  int i;
+  int i;
+  int id;
+  int D.2779;
+  int D.2778;
+  long int D.2777;
+  int D.2776;
+  int D.2773;
+  long int D.2772;
+  int D.2771;
+
+  <bb 2>:
+  D.2771 = pthread_self ();
+  D.2772 = (long int) D.2771;
+  D.2773 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Antes da Região Paralela.\n", D.2773, D.2772);
+  __builtin_GOMP_parallel_start (main._omp_fn.0, 0B, 4);
+  main._omp_fn.0 (0B);
+  __builtin_GOMP_parallel_end ();
+  D.2776 = pthread_self ();
+  D.2777 = (long int) D.2776;
+  D.2778 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Depois da Região Paralela.\n", D.2778, D.2777);
+  D.2779 = 0;
+
+<L0>:
+  return D.2779;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2781, cgraph_uid=6)
+
+main._omp_fn.0 (void * .omp_data_i)
+{
+  _Bool D.2804;
+  long int D.2803;
+  int D.2802;
+  int D.2801;
+  long int .iend0.4;
+  int i;
+  long int .istart0.3;
+  _Bool D.2797;
+  long int .iend0.2;
+  long int .istart0.1;
+  int id;
+
+  <bb 11>:
+
+  <bb 3>:
+  id = omp_get_thread_num ();
+  D.2797 = __builtin_GOMP_loop_dynamic_start (0, 16, 1, 2, &.istart0.1, &.iend0.2);
+  if (D.2797 != 0)
+    goto <bb 9>;
+  else
+    goto <bb 5>;
+
+  <bb 9>:
+  .istart0.3 = .istart0.1;
+  i = (int) .istart0.3;
+  .iend0.4 = .iend0.2;
+  D.2801 = (int) .iend0.4;
+
+  <bb 4>:
+  D.2802 = pthread_self ();
+  D.2803 = (long int) D.2802;
+  printf ("Thread[%d][%lu]: Trabalhando na iteração %lu.\n", id, D.2803, i);
+  i = i + 1;
+  if (i < D.2801)
+    goto <bb 4>;
+  else
+    goto <bb 10>;
+
+  <bb 10>:
+  D.2804 = __builtin_GOMP_loop_dynamic_next (&.istart0.1, &.iend0.2);
+  if (D.2804 != 0)
+    goto <bb 9>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  __builtin_GOMP_loop_end_nowait ();
+
+  <bb 6>:
+  return;
+
+}
+
+

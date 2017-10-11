@@ -1,0 +1,187 @@
+digraph "example-parallel-with-clauses.c.015t.ompexp" {
+overlap=false;
+subgraph "main" {
+	color="black";
+	label="main";
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|D.2775\ =\ argv\ +\ 8;\l\
+|D.2776\ =\ *D.2775;\l\
+|n\ =\ atoi\ (D.2776);\l\
+|valor\ =\ 0;\l\
+|D.2777\ =\ pthread_self\ ();\l\
+|D.2778\ =\ (long\ int)\ D.2777;\l\
+|D.2779\ =\ omp_get_thread_num\ ();\l\
+|printf\ (\"Thread[%d][%lu]:\ Antes\ da\ Região\ Paralela.\n\",\ D.2779,\ D.2778);\l\
+|D.2780\ =\ n\ \>\ 1024;\l\
+|.omp_data_o.2.valor\ =\ valor;\l\
+|if\ (D.2780\ !=\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|D.2854\ =\ 1;\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.2854\ =\ 4;\l\
+goto\ \<bb\ 5\>;\l\
+}"];
+
+	fn_2_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|__builtin_GOMP_parallel_start\ (main._omp_fn.0,\ &.omp_data_o.2,\ D.2854);\l\
+|main._omp_fn.0\ (&.omp_data_o.2);\l\
+|__builtin_GOMP_parallel_end\ ();\l\
+|valor\ =\ .omp_data_o.2.valor;\l\
+|D.2801\ =\ pthread_self\ ();\l\
+|D.2802\ =\ (long\ int)\ D.2801;\l\
+|D.2803\ =\ omp_get_thread_num\ ();\l\
+|printf\ (\"Thread[%d][%lu]:\ Depois\ da\ Região\ Paralela.\n\",\ D.2803,\ D.2802);\l\
+|D.2804\ =\ 0;\l\
+}"];
+
+	fn_2_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L6\>:\l\
+|return\ D.2804;\l\
+}"];
+
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_2:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_3:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_4:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_5:s -> fn_2_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_6:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "main._omp_fn.0" {
+	color="black";
+	label="main._omp_fn.0";
+	fn_3_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_3_basic_block_18 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 18\>:\l\
+}"];
+
+	fn_3_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|id\ =\ omp_get_thread_num\ ();\l\
+|D.2828\ =\ pthread_self\ ();\l\
+|id_sys\ =\ (long\ int)\ D.2828;\l\
+|printf\ (\"Thread[%d][%lu]:\ Código\ Executado\ por\ todas\ as\ threads.\n\",\ id,\ id_sys);\l\
+}"];
+
+	fn_3_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|D.2830\ =\ __builtin_omp_get_thread_num\ ();\l\
+|if\ (D.2830\ ==\ 0)\l\
+\ \ goto\ \<bb\ 5\>;\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\l\
+}"];
+
+	fn_3_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|D.2851\ =\ pthread_self\ ();\l\
+|D.2852\ =\ (long\ int)\ D.2851;\l\
+|printf\ (\"Thread[%d][%lu]:\ Código\ Executado\ pela\ thread\ master.\n\",\ id,\ D.2852);\l\
+goto\ \<bb\ 6\>;\l\
+}"];
+
+	fn_3_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+}"];
+
+	fn_3_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+}"];
+
+	fn_3_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|D.2831\ =\ __builtin_GOMP_single_start\ ();\l\
+|if\ (D.2831\ ==\ 1)\l\
+\ \ goto\ \<bb\ 9\>;\l\
+else\l\
+\ \ goto\ \<bb\ 10\>;\l\
+}"];
+
+	fn_3_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|D.2849\ =\ pthread_self\ ();\l\
+|D.2850\ =\ (long\ int)\ D.2849;\l\
+|printf\ (\"Thread[%d][%lu]:\ Código\ Executado\ por\ uma\ das\ threads.\n\",\ id,\ D.2850);\l\
+goto\ \<bb\ 10\>;\l\
+}"];
+
+	fn_3_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|__builtin_GOMP_barrier\ ();\l\
+}"];
+
+	fn_3_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|D.2832\ =\ omp_get_thread_num\ ();\l\
+|if\ (D.2832\ ==\ 3)\l\
+\ \ goto\ \<bb\ 12\>;\l\
+else\l\
+\ \ goto\ \<bb\ 13\>;\l\
+}"];
+
+	fn_3_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|D.2847\ =\ pthread_self\ ();\l\
+|D.2848\ =\ (long\ int)\ D.2847;\l\
+|printf\ (\"Thread[%d][%lu]:\ Código\ Executado\ pela\ thread\ de\ id:\ 3.\n\",\ id,\ D.2848);\l\
+goto\ \<bb\ 13\>;\l\
+}"];
+
+	fn_3_basic_block_13 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 13\>:\l\
+}"];
+
+	fn_3_basic_block_14 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 14\>:\l\
+|__builtin_GOMP_critical_start\ ();\l\
+|D.2833\ =\ pthread_self\ ();\l\
+|D.2834\ =\ (long\ int)\ D.2833;\l\
+|printf\ (\"Thread[%d][%lu]:\ Executando\ a\ região\ crítica.\n\",\ id,\ D.2834);\l\
+|D.2835\ =\ pthread_self\ ();\l\
+|D.2836\ =\ (long\ int)\ D.2835;\l\
+|D.2837\ =\ .omp_data_i-\>valor;\l\
+|printf\ (\"Thread[%d][%lu]:\ Antes...\ valor:\ %d\n\",\ id,\ D.2836,\ D.2837);\l\
+|D.2838\ =\ .omp_data_i-\>valor;\l\
+|D.2839\ =\ D.2838\ +\ id;\l\
+|.omp_data_i-\>valor\ =\ D.2839;\l\
+|D.2840\ =\ pthread_self\ ();\l\
+|D.2841\ =\ (long\ int)\ D.2840;\l\
+|D.2842\ =\ .omp_data_i-\>valor;\l\
+|printf\ (\"Thread[%d][%lu]:\ Depois...\ valor:\ %d\n\",\ id,\ D.2841,\ D.2842);\l\
+|__builtin_GOMP_critical_end\ ();\l\
+}"];
+
+	fn_3_basic_block_15 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 15\>:\l\
+|D.2843\ =\ pthread_self\ ();\l\
+|D.2844\ =\ (long\ int)\ D.2843;\l\
+|printf\ (\"Thread[%d][%lu]:\ Barreira.\n\",\ id,\ D.2844);\l\
+|__builtin_GOMP_barrier\ ();\l\
+|D.2845\ =\ pthread_self\ ();\l\
+|D.2846\ =\ (long\ int)\ D.2845;\l\
+|printf\ (\"Thread[%d][%lu]:\ Depois\ da\ barreira.\n\",\ id,\ D.2846);\l\
+|return;\l\
+}"];
+
+	fn_3_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_3_basic_block_0:s -> fn_3_basic_block_18:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_18:s -> fn_3_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_3:s -> fn_3_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_6:s -> fn_3_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_7:s -> fn_3_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_8:s -> fn_3_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_8:s -> fn_3_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_10:s -> fn_3_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_11:s -> fn_3_basic_block_12:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_11:s -> fn_3_basic_block_13:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_13:s -> fn_3_basic_block_14:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_14:s -> fn_3_basic_block_15:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_15:s -> fn_3_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_12:s -> fn_3_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_9:s -> fn_3_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_5:s -> fn_3_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_0:s -> fn_3_basic_block_1:n [style="invis",constraint=true];
+}
+}

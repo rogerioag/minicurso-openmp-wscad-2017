@@ -1,0 +1,130 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2816, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_sections
+        bb 5: gimple_omp_section
+        bb 6: GIMPLE_OMP_RETURN
+        bb 7: gimple_omp_section
+        bb 8: GIMPLE_OMP_RETURN
+        bb 9: gimple_omp_section
+        bb 10: GIMPLE_OMP_RETURN
+    bb 11: GIMPLE_OMP_CONTINUE
+    bb 12: GIMPLE_OMP_RETURN
+bb 13: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 18
+Merging blocks 2 and 14
+main (int argc, char * * argv)
+{
+  int id;
+  int id;
+  int D.2837;
+  struct _IO_FILE * stdout.4;
+  long int D.2835;
+  int D.2834;
+  struct _IO_FILE * stdout.0;
+  long int D.2823;
+  int D.2822;
+  unsigned int .section.6;
+  struct .omp_data_s.5 .omp_data_o.7;
+  int D.2845;
+
+  <bb 2>:
+  D.2822 = pthread_self ();
+  D.2823 = (long int) D.2822;
+  stdout.0 = stdout;
+  fprintf (stdout.0, "Thread[%lu]: Antes da Região Paralela.\n", D.2823);
+  .omp_data_o.7.id = id;
+  __builtin_GOMP_parallel_start (main._omp_fn.0, &.omp_data_o.7, 4);
+  main._omp_fn.0 (&.omp_data_o.7);
+  __builtin_GOMP_parallel_end ();
+  id = .omp_data_o.7.id;
+  D.2834 = pthread_self ();
+  D.2835 = (long int) D.2834;
+  stdout.4 = stdout;
+  fprintf (stdout.4, "Thread[%lu]: Depois da Região Paralela.\n", D.2835);
+  D.2837 = 0;
+
+<L0>:
+  return D.2837;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2839, cgraph_uid=5)
+
+main._omp_fn.0 (struct .omp_data_s.5 * .omp_data_i)
+{
+  int id [value-expr: .omp_data_i->id];
+  struct _IO_FILE * stdout.1;
+  long int D.2864;
+  int D.2863;
+  struct _IO_FILE * stdout.2;
+  long int D.2861;
+  int D.2860;
+  struct _IO_FILE * stdout.3;
+  long int D.2858;
+  int D.2857;
+  unsigned int .section.6;
+  int id;
+  int D.2854;
+
+  <bb 17>:
+
+  <bb 3>:
+  D.2854 = omp_get_thread_num ();
+  .omp_data_i->id = D.2854;
+  id = .omp_data_i->id;
+  .section.6 = __builtin_GOMP_sections_start (3);
+
+  <bb 4>:
+  switch (.section.6) <default: <L5>, case 0: <L1>, case 1: <L2>, case 2: <L3>, case 3: <L4>>
+
+<L5>:
+  __builtin_trap ();
+
+<L1>:
+  __builtin_GOMP_sections_end_nowait ();
+
+  <bb 13>:
+  return;
+
+  <bb 11>:
+  .section.6 = __builtin_GOMP_sections_next ();
+  goto <bb 4>;
+
+<L4>:
+
+  <bb 10>:
+  D.2857 = pthread_self ();
+  D.2858 = (long int) D.2857;
+  stdout.3 = stdout;
+  fprintf (stdout.3, "   Thread[%lu,%lu]: Trabalhando na seção 3.\n", id, D.2858);
+  goto <bb 11>;
+
+<L3>:
+
+  <bb 8>:
+  D.2860 = pthread_self ();
+  D.2861 = (long int) D.2860;
+  stdout.2 = stdout;
+  fprintf (stdout.2, "   Thread[%lu,%lu]: Trabalhando na seção 2.\n", id, D.2861);
+  goto <bb 11>;
+
+<L2>:
+
+  <bb 6>:
+  D.2863 = pthread_self ();
+  D.2864 = (long int) D.2863;
+  stdout.1 = stdout;
+  fprintf (stdout.1, "   Thread[%lu,%lu]: Trabalhando na seção 1.\n", id, D.2864);
+  goto <bb 11>;
+
+}
+
+

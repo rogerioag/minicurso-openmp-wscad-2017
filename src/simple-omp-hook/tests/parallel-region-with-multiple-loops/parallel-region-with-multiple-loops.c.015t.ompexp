@@ -1,0 +1,172 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2766, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 6: gimple_omp_for
+    bb 7: GIMPLE_OMP_CONTINUE
+    bb 8: GIMPLE_OMP_RETURN
+    bb 3: gimple_omp_for
+    bb 4: GIMPLE_OMP_CONTINUE
+    bb 5: GIMPLE_OMP_RETURN
+bb 9: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 20
+Merging blocks 2 and 10
+main ()
+{
+  _Bool D.2802;
+  long int .iend0.9;
+  int D.2801;
+  long int .istart0.8;
+  _Bool D.2798;
+  long int .iend0.7;
+  long int .istart0.6;
+  _Bool D.2795;
+  long int .iend0.5;
+  int D.2794;
+  long int .istart0.4;
+  _Bool D.2791;
+  long int .iend0.3;
+  long int .istart0.2;
+  int i;
+  int i;
+  int loop_index;
+  int i;
+  int D.2778;
+  int D.2777;
+  int D.2776;
+  struct .omp_data_s.0 .omp_data_o.1;
+
+  <bb 2>:
+  .omp_data_o.1.loop_index = loop_index;
+  __builtin_GOMP_parallel_start (main._omp_fn.0, &.omp_data_o.1, 1);
+  main._omp_fn.0 (&.omp_data_o.1);
+  __builtin_GOMP_parallel_end ();
+  loop_index = .omp_data_o.1.loop_index;
+  __builtin_puts (&"Fora da região paralela."[0]);
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.2776 = loop_1[i];
+  D.2777 = loop_0[i];
+  printf ("loop_0[%d]: %lu, loop_1[%d]: %lu\n", i, D.2777, i, D.2776);
+  i = i + 1;
+
+  <bb 4>:
+  if (i <= 7)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  D.2778 = 0;
+
+<L3>:
+  return D.2778;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2780, cgraph_uid=3)
+
+main._omp_fn.0 (struct .omp_data_s.0 * .omp_data_i)
+{
+  int loop_index [value-expr: .omp_data_i->loop_index];
+  _Bool D.2820;
+  int D.2819;
+  int D.2818;
+  long int .iend0.5;
+  int i;
+  long int .istart0.4;
+  _Bool D.2814;
+  long int .iend0.3;
+  long int .istart0.2;
+  _Bool D.2811;
+  int D.2810;
+  int D.2809;
+  long int .iend0.9;
+  int i;
+  long int .istart0.8;
+  _Bool D.2805;
+  long int .iend0.7;
+  long int .istart0.6;
+
+  <bb 19>:
+
+  <bb 3>:
+  .omp_data_i->loop_index = 0;
+  D.2805 = __builtin_GOMP_loop_dynamic_start (0, 8, 1, 1, &.istart0.6, &.iend0.7);
+  if (D.2805 != 0)
+    goto <bb 17>;
+  else
+    goto <bb 5>;
+
+  <bb 17>:
+  .istart0.8 = .istart0.6;
+  i = (int) .istart0.8;
+  .iend0.9 = .iend0.7;
+  D.2809 = (int) .iend0.9;
+
+  <bb 4>:
+  D.2810 = omp_get_thread_num ();
+  loop_0[i] = D.2810;
+  i = i + 1;
+  if (i < D.2809)
+    goto <bb 4>;
+  else
+    goto <bb 18>;
+
+  <bb 18>:
+  D.2811 = __builtin_GOMP_loop_dynamic_next (&.istart0.6, &.iend0.7);
+  if (D.2811 != 0)
+    goto <bb 17>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  __builtin_GOMP_loop_end ();
+
+  <bb 6>:
+  .omp_data_i->loop_index = 1;
+  D.2814 = __builtin_GOMP_loop_runtime_start (0, 8, 1, &.istart0.2, &.iend0.3);
+  if (D.2814 != 0)
+    goto <bb 15>;
+  else
+    goto <bb 8>;
+
+  <bb 15>:
+  .istart0.4 = .istart0.2;
+  i = (int) .istart0.4;
+  .iend0.5 = .iend0.3;
+  D.2818 = (int) .iend0.5;
+
+  <bb 7>:
+  D.2819 = omp_get_thread_num ();
+  loop_1[i] = D.2819;
+  i = i + 1;
+  if (i < D.2818)
+    goto <bb 7>;
+  else
+    goto <bb 16>;
+
+  <bb 16>:
+  D.2820 = __builtin_GOMP_loop_runtime_next (&.istart0.2, &.iend0.3);
+  if (D.2820 != 0)
+    goto <bb 15>;
+  else
+    goto <bb 8>;
+
+  <bb 8>:
+  __builtin_GOMP_loop_end_nowait ();
+
+  <bb 9>:
+  return;
+
+}
+
+

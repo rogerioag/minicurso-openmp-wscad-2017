@@ -1,0 +1,118 @@
+
+;; Function init_array (init_array, funcdef_no=2, decl_uid=3556, cgraph_uid=2, symbol_order=5)
+
+init_array ()
+{
+  int i;
+  struct _IO_FILE * stdout.0;
+
+  <bb 2>:
+  stdout.0 = stdout;
+  __builtin_fwrite ("Inicializando os arrays.\n", 1, 25, stdout.0);
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  h_a[i] = 5.0e-1;
+  h_b[i] = 5.0e-1;
+  i = i + 1;
+
+  <bb 4>:
+  if (i <= 1048575)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=3, decl_uid=3564, cgraph_uid=3, symbol_order=6)
+
+main (int argc, char * * argv)
+{
+  int i;
+  double res;
+  int i;
+  int D.3590;
+  struct _IO_FILE * stdout.3;
+  long int D.3588;
+  int D.3587;
+  long int D.3586;
+  long unsigned int D.3585;
+  struct _IO_FILE * stdout.2;
+  long int D.3583;
+  int D.3582;
+  long int D.3581;
+  long unsigned int D.3580;
+  double D.3579;
+  double D.3578;
+  double D.3577;
+  double D.3576;
+  double D.3575;
+  struct _IO_FILE * stdout.1;
+  long int D.3573;
+  int D.3572;
+  long int D.3571;
+  long unsigned int D.3570;
+
+  <bb 2>:
+  init_array ();
+  D.3570 = pthread_self ();
+  D.3571 = (long int) D.3570;
+  D.3572 = omp_get_thread_num ();
+  D.3573 = (long int) D.3572;
+  stdout.1 = stdout;
+  fprintf (stdout.1, "Thread[%lu,%lu]: Antes do simd.\n", D.3573, D.3571);
+  i = 0;
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.3575 = h_c[i];
+  D.3576 = h_a[i];
+  D.3577 = h_b[i];
+  D.3578 = D.3576 * D.3577;
+  D.3579 = D.3575 + D.3578;
+  h_c[i] = D.3579;
+  i = i + 1;
+
+  <bb 4>:
+  if (i < 1048576)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  if (i == 1048576)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  i = i;
+
+  <bb 7>:
+  D.3580 = pthread_self ();
+  D.3581 = (long int) D.3580;
+  D.3582 = omp_get_thread_num ();
+  D.3583 = (long int) D.3582;
+  stdout.2 = stdout;
+  fprintf (stdout.2, "Thread[%lu,%lu]: Depois do simd.\n", D.3583, D.3581);
+  D.3585 = pthread_self ();
+  D.3586 = (long int) D.3585;
+  D.3587 = omp_get_thread_num ();
+  D.3588 = (long int) D.3587;
+  stdout.3 = stdout;
+  fprintf (stdout.3, "Thread[%lu,%lu]: res: %g\n", D.3588, D.3586, res);
+  D.3590 = 0;
+
+<L2>:
+  return D.3590;
+
+}
+
+

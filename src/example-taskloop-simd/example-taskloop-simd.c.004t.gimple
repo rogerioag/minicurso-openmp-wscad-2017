@@ -1,0 +1,109 @@
+init_array ()
+{
+  struct _IO_FILE * stdout.0;
+  int i;
+
+  stdout.0 = stdout;
+  __builtin_fwrite ("Inicializando os arrays.\n", 1, 25, stdout.0);
+  i = 0;
+  goto <D.3560>;
+  <D.3559>:
+  h_a[i] = 5.0e-1;
+  h_b[i] = 5.0e-1;
+  i = i + 1;
+  <D.3560>:
+  if (i <= 1048575) goto <D.3559>; else goto <D.3561>;
+  <D.3561>:
+}
+
+
+func ()
+{
+  int i.1;
+  int i;
+
+  #pragma omp taskloop num_tasks(4)
+  for (i.1 = 0; i.1 <= 1048575; i.1 = i.1 + 1)
+    {
+      {
+        #pragma omp taskloop private(i.1) shared(i)
+          {
+            #pragma omp taskloop lastprivate(i)
+            for (i.1 = 0; i.1 <= 1048575; i.1 = i.1 + 1)
+              {
+                {
+                  double D.3571;
+                  double D.3572;
+                  double D.3573;
+
+                  #pragma omp simd linear(i:1)
+                  for (i = 0; i <= 1048575; i = i + 1)
+                    {
+                      D.3571 = h_a[i];
+                      D.3572 = h_b[i];
+                      D.3573 = D.3571 * D.3572;
+                      h_c[i] = D.3573;
+                    }
+                }
+              }
+          }
+      }
+    }
+}
+
+
+main (int argc, char * * argv)
+{
+  long unsigned int D.3614;
+  long int D.3615;
+  int D.3616;
+  long int D.3617;
+  struct _IO_FILE * stdout.4;
+  long unsigned int D.3624;
+  long int D.3625;
+  int D.3626;
+  long int D.3627;
+  struct _IO_FILE * stdout.6;
+  int D.3629;
+
+  {
+    init_array ();
+    D.3614 = pthread_self ();
+    D.3615 = (long int) D.3614;
+    D.3616 = omp_get_thread_num ();
+    D.3617 = (long int) D.3616;
+    stdout.4 = stdout;
+    fprintf (stdout.4, "Thread[%lu,%lu]: Before parallel region.\n", D.3617, D.3615);
+    #pragma omp parallel num_threads(4)
+      {
+        long unsigned int D.3619;
+        long int D.3620;
+        int D.3621;
+        long int D.3622;
+        struct _IO_FILE * stdout.5;
+
+        #pragma omp single
+          {
+            D.3619 = pthread_self ();
+            D.3620 = (long int) D.3619;
+            D.3621 = omp_get_thread_num ();
+            D.3622 = (long int) D.3621;
+            stdout.5 = stdout;
+            fprintf (stdout.5, "  Thread[%lu,%lu]: Before tasks.\n", D.3622, D.3620);
+            func ();
+          }
+      }
+    D.3624 = pthread_self ();
+    D.3625 = (long int) D.3624;
+    D.3626 = omp_get_thread_num ();
+    D.3627 = (long int) D.3626;
+    stdout.6 = stdout;
+    fprintf (stdout.6, "Thread[%lu,%lu]: After parallel region.\n", D.3627, D.3625);
+    D.3629 = 0;
+    return D.3629;
+  }
+  D.3629 = 0;
+  return D.3629;
+}
+
+

@@ -1,0 +1,373 @@
+
+;; Function vecaddgpu (vecaddgpu, funcdef_no=2, decl_uid=3597, cgraph_uid=2, symbol_order=6)
+
+
+OMP region tree
+
+bb 2: gimple_omp_target
+    bb 3: gimple_omp_target
+        bb 4: gimple_omp_parallel
+            bb 5: gimple_omp_for
+            bb 6: GIMPLE_OMP_CONTINUE
+            bb 7: GIMPLE_OMP_RETURN
+        bb 8: GIMPLE_OMP_RETURN
+    bb 9: GIMPLE_OMP_RETURN
+bb 10: GIMPLE_OMP_RETURN
+
+Added new low gimple function vecaddgpu._omp_fn.1 to callgraph
+Introduced new external node (__builtin_omp_get_num_threads/11).
+Introduced new external node (__builtin_omp_get_thread_num/12).
+
+;; Function vecaddgpu._omp_fn.1 (vecaddgpu._omp_fn.1, funcdef_no=6, decl_uid=3646, cgraph_uid=6, symbol_order=10)
+
+__attribute__((omp declare target))
+vecaddgpu._omp_fn.1 (struct .omp_data_s.9 & restrict .omp_data_i)
+{
+  float D.3709;
+  float * D.3708;
+  long unsigned int D.3707;
+  long unsigned int D.3706;
+  float D.3705;
+  float * D.3704;
+  long unsigned int D.3703;
+  long unsigned int D.3702;
+  float D.3701;
+  float * D.3700;
+  long unsigned int D.3699;
+  long unsigned int D.3698;
+  int i;
+  int D.3696;
+  int D.3695;
+  int D.3694;
+  int tt.20;
+  int q.19;
+  int D.3691;
+  int D.3690;
+  int n.10;
+  int n.6;
+  int n;
+  float * restrict c;
+  float * a;
+  float * b;
+
+  <bb 15> [0.00%]:
+
+  <bb 5> [0.00%]:
+  b = .omp_data_i->b;
+  a = .omp_data_i->a;
+  c = .omp_data_i->c;
+  n = .omp_data_i->n;
+  n.6 = n;
+  n.10 = n.6;
+  D.3690 = __builtin_omp_get_num_threads ();
+  D.3691 = __builtin_omp_get_thread_num ();
+  q.19 = n.10 / D.3690;
+  tt.20 = n.10 % D.3690;
+  if (D.3691 < tt.20)
+    goto <bb 13>; [25.00%]
+  else
+    goto <bb 14>; [75.00%]
+
+  <bb 14> [0.00%]:
+  D.3694 = q.19 * D.3691;
+  D.3695 = D.3694 + tt.20;
+  D.3696 = D.3695 + q.19;
+  if (D.3695 >= D.3696)
+    goto <bb 7>; [0.00%]
+  else
+    goto <bb 12>; [0.00%]
+
+  <bb 12> [0.00%]:
+  i = D.3695;
+
+  <bb 6> [0.00%]:
+  D.3698 = (long unsigned int) i;
+  D.3699 = D.3698 * 4;
+  D.3700 = a + D.3699;
+  D.3701 = *D.3700;
+  D.3702 = (long unsigned int) i;
+  D.3703 = D.3702 * 4;
+  D.3704 = b + D.3703;
+  D.3705 = *D.3704;
+  D.3706 = (long unsigned int) i;
+  D.3707 = D.3706 * 4;
+  D.3708 = c + D.3707;
+  D.3709 = D.3701 + D.3705;
+  *D.3708 = D.3709;
+  i = i + 1;
+  if (i < D.3696)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 7>; [0.00%]
+
+  <bb 7> [0.00%]:
+
+  <bb 8> [0.00%]:
+  return;
+
+  <bb 13> [0.00%]:
+  tt.20 = 0;
+  q.19 = q.19 + 1;
+  goto <bb 14>; [100.00%]
+
+}
+
+
+
+;; Function vecaddgpu (vecaddgpu, funcdef_no=2, decl_uid=3597, cgraph_uid=2, symbol_order=6)
+
+Added new low gimple function vecaddgpu._omp_fn.0 to callgraph
+Introduced new external node (__builtin_GOMP_parallel/13).
+
+;; Function vecaddgpu._omp_fn.0 (vecaddgpu._omp_fn.0, funcdef_no=5, decl_uid=3634, cgraph_uid=5, symbol_order=9)
+
+__attribute__((omp target entrypoint))
+vecaddgpu._omp_fn.0 (const struct .omp_data_t.8 & restrict .omp_data_i)
+{
+  unsigned int D.3726;
+  _Bool D.3725;
+  struct .omp_data_s.9 .omp_data_o.11;
+  _Bool D.3723;
+  int n.5;
+  float * restrict c;
+  void * D.3720;
+  float * a;
+  void * D.3718;
+  float * b;
+  void * D.3716;
+  int n;
+  int D.3714;
+  unsigned long D.3713;
+  int * D.3712;
+
+  <bb 17> [0.00%]:
+
+  <bb 4> [0.00%]:
+  D.3712 = .omp_data_i->n;
+  D.3713 = (unsigned long) D.3712;
+  D.3714 = (int) D.3713;
+  n = D.3714;
+  D.3716 = .omp_data_i->D.3637;
+  b = D.3716;
+  D.3718 = .omp_data_i->D.3639;
+  a = D.3718;
+  D.3720 = .omp_data_i->D.3641;
+  c = D.3720;
+  n.5 = n;
+  D.3723 = n.5 > 1024;
+  .omp_data_o.11.b = b;
+  .omp_data_o.11.a = a;
+  .omp_data_o.11.c = c;
+  .omp_data_o.11.n = n;
+
+  <bb 16> [0.00%]:
+  D.3725 = ~D.3723;
+  D.3726 = (unsigned int) D.3725;
+  __builtin_GOMP_parallel (vecaddgpu._omp_fn.1, &.omp_data_o.11, D.3726, 0);
+
+  <bb 9> [0.00%]:
+  .omp_data_o.11 = {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function vecaddgpu (vecaddgpu, funcdef_no=2, decl_uid=3597, cgraph_uid=2, symbol_order=6)
+
+Merging blocks 19 and 10
+Merging blocks 22 and 3
+Merging blocks 19 and 11
+Merging blocks 22 and 18
+vecaddgpu (float * restrict c, float * a, float * b)
+{
+  int D.3729;
+  void * .omp_target_args.21[3];
+  int D.3727;
+  _Bool D.3710;
+  unsigned int D.3711;
+  int D.3683;
+  int D.3681;
+  int D.3682;
+  int tt.20;
+  int q.19;
+  int D.3678;
+  int D.3677;
+  int n.10;
+  int i;
+  _Bool D.3613;
+  int n.4;
+  struct .omp_data_t.7 .omp_data_arr.16;
+  long unsigned int .omp_data_sizes.17[3];
+  short unsigned int .omp_data_kinds.18[3];
+  short unsigned int D.3674;
+  short unsigned int D.3675;
+  short unsigned int D.3676;
+  struct .omp_data_t.8 .omp_data_arr.12;
+  static long unsigned int .omp_data_sizes.13[4] = {0, 0, 0, 0};
+  static short unsigned int .omp_data_kinds.14[4] = {15, 15, 15, 525};
+  int n.15;
+  unsigned long D.3663;
+  int * D.3664;
+  int * D.3665;
+  unsigned long D.3666;
+  int D.3667;
+  void * D.3668;
+  void * D.3669;
+  void * D.3670;
+  struct .omp_data_s.9 .omp_data_o.11;
+
+  <bb 2> [0.00%]:
+  n.0_1 = n;
+  _2 = n.0_1 > 1024;
+  n.1_3 = n;
+  _4 = (sizetype) n.1_3;
+  _5 = _4 * 4;
+  n.2_6 = n;
+  _7 = (sizetype) n.2_6;
+  _8 = _7 * 4;
+  n.3_9 = n;
+  _10 = (sizetype) n.3_9;
+  _11 = _10 * 4;
+  .omp_data_arr.16.D.3630 = c;
+  .omp_data_arr.16.D.3631 = b;
+  .omp_data_arr.16.D.3632 = a;
+  .omp_data_sizes.17[0] = _5;
+  .omp_data_sizes.17[1] = _8;
+  .omp_data_sizes.17[2] = _11;
+  D.3674 = _5 == 0 ? 527 : 514;
+  .omp_data_kinds.18[0] = D.3674;
+  D.3675 = _8 == 0 ? 527 : 513;
+  .omp_data_kinds.18[1] = D.3675;
+  D.3676 = _11 == 0 ? 527 : 513;
+  .omp_data_kinds.18[2] = D.3676;
+  if (_2 != 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 3> [0.00%]:
+  D.3729 = -1;
+  goto <bb 5>; [0.00%]
+
+  <bb 4> [0.00%]:
+  D.3729 = -2;
+
+  <bb 5> [0.00%]:
+  __builtin_GOMP_target_data_ext (D.3729, 3, &.omp_data_arr.16, &.omp_data_sizes.17, &.omp_data_kinds.18);
+  n.4 = n;
+  D.3613 = n.4 > 1024;
+  .omp_data_arr.12.D.3637 = b;
+  .omp_data_arr.12.D.3639 = a;
+  .omp_data_arr.12.D.3641 = c;
+  n.15 = n;
+  D.3663 = (unsigned long) n.15;
+  D.3664 = (int *) D.3663;
+  .omp_data_arr.12.n = D.3664;
+  if (D.3613 != 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 7>; [0.00%]
+
+  <bb 6> [0.00%]:
+  D.3727 = -1;
+  goto <bb 8>; [0.00%]
+
+  <bb 7> [0.00%]:
+  D.3727 = -2;
+
+  <bb 8> [0.00%]:
+  .omp_target_args.21[0] = 65792B;
+  .omp_target_args.21[1] = 512B;
+  .omp_target_args.21[2] = 0B;
+  __builtin_GOMP_target_ext (D.3727, vecaddgpu._omp_fn.0, 4, &.omp_data_arr.12, &.omp_data_sizes.13, &.omp_data_kinds.14, 0, 0B, &.omp_target_args.21);
+  .omp_data_arr.12 = {CLOBBER};
+  __builtin_GOMP_target_end_data ();
+  .omp_data_sizes.17 = {CLOBBER};
+  .omp_data_kinds.18 = {CLOBBER};
+  .omp_data_arr.16 = {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function init_array (init_array, funcdef_no=3, decl_uid=3600, cgraph_uid=3, symbol_order=7)
+
+init_array ()
+{
+  int i;
+
+  <bb 2> [0.00%]:
+  stdout.22_1 = stdout;
+  __builtin_fwrite ("Inicializando os arrays.\n", 1, 25, stdout.22_1);
+  i = 0;
+  goto <bb 4>; [0.00%]
+
+  <bb 3> [0.00%]:
+  h_a.23_2 = h_a;
+  _3 = (long unsigned int) i;
+  _4 = _3 * 4;
+  _5 = h_a.23_2 + _4;
+  *_5 = 5.0e-1;
+  h_b.24_6 = h_b;
+  _7 = (long unsigned int) i;
+  _8 = _7 * 4;
+  _9 = h_b.24_6 + _8;
+  *_9 = 5.0e-1;
+  i = i + 1;
+
+  <bb 4> [0.00%]:
+  n.25_10 = n;
+  if (i < n.25_10)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 5>; [0.00%]
+
+  <bb 5> [0.00%]:
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=4, decl_uid=3608, cgraph_uid=4, symbol_order=8)
+
+main (int argc, char * * argv)
+{
+  int i;
+  int D.3730;
+
+  <bb 2> [0.00%]:
+  _1 = argv + 8;
+  _2 = *_1;
+  _3 = atoi (_2);
+  n = _3;
+  n.26_4 = n;
+  _5 = (long unsigned int) n.26_4;
+  _6 = _5 * 4;
+  _7 = malloc (_6);
+  h_a = _7;
+  n.27_8 = n;
+  _9 = (long unsigned int) n.27_8;
+  _10 = _9 * 4;
+  _11 = malloc (_10);
+  h_b = _11;
+  n.28_12 = n;
+  _13 = (long unsigned int) n.28_12;
+  _14 = _13 * 4;
+  _15 = malloc (_14);
+  h_c = _15;
+  init_array ();
+  h_b.29_16 = h_b;
+  h_a.30_17 = h_a;
+  h_c.31_18 = h_c;
+  vecaddgpu (h_c.31_18, h_a.30_17, h_b.29_16);
+  D.3730 = 0;
+
+<L0> [0.00%]:
+  return D.3730;
+
+}
+
+

@@ -1,0 +1,202 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2766, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 13: gimple_omp_critical
+    bb 14: GIMPLE_OMP_RETURN
+    bb 7: gimple_omp_single
+    bb 10: GIMPLE_OMP_RETURN
+    bb 3: gimple_omp_master
+    bb 6: GIMPLE_OMP_RETURN
+bb 15: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 19
+Merging blocks 20 and 16
+main (int argc, char * * argv)
+{
+  unsigned int D.2854;
+  _Bool D.2820;
+  int D.2816;
+  long int id_sys;
+  int valor;
+  int id;
+  int n;
+  int D.2804;
+  int D.2803;
+  long int D.2802;
+  int D.2801;
+  _Bool D.2780;
+  int D.2779;
+  long int D.2778;
+  int D.2777;
+  char * D.2776;
+  char * * D.2775;
+  struct .omp_data_s.0 .omp_data_o.2;
+  int D.2824;
+  int D.2822;
+  int D.2823;
+  int D.2821;
+
+  <bb 2>:
+  D.2775 = argv + 8;
+  D.2776 = *D.2775;
+  n = atoi (D.2776);
+  valor = 0;
+  D.2777 = pthread_self ();
+  D.2778 = (long int) D.2777;
+  D.2779 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Antes da Região Paralela.\n", D.2779, D.2778);
+  D.2780 = n > 1024;
+  .omp_data_o.2.valor = valor;
+  if (D.2780 != 0)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  D.2854 = 4;
+  goto <bb 5>;
+
+  <bb 4>:
+  D.2854 = 1;
+
+  <bb 5>:
+  __builtin_GOMP_parallel_start (main._omp_fn.0, &.omp_data_o.2, D.2854);
+  main._omp_fn.0 (&.omp_data_o.2);
+  __builtin_GOMP_parallel_end ();
+  valor = .omp_data_o.2.valor;
+  D.2801 = pthread_self ();
+  D.2802 = (long int) D.2801;
+  D.2803 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Depois da Região Paralela.\n", D.2803, D.2802);
+  D.2804 = 0;
+
+<L6>:
+  return D.2804;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2806, cgraph_uid=7)
+
+main._omp_fn.0 (struct .omp_data_s.0 * .omp_data_i)
+{
+  int valor [value-expr: .omp_data_i->valor];
+  long int D.2852;
+  int D.2851;
+  long int D.2850;
+  int D.2849;
+  long int D.2848;
+  int D.2847;
+  long int D.2846;
+  int D.2845;
+  long int D.2844;
+  int D.2843;
+  int D.2842;
+  long int D.2841;
+  int D.2840;
+  int D.2839;
+  int D.2838;
+  int D.2837;
+  long int D.2836;
+  int D.2835;
+  long int D.2834;
+  int D.2833;
+  int D.2832;
+  _Bool D.2831;
+  int D.2830;
+  long int id_sys;
+  int D.2828;
+  int id;
+
+  <bb 18>:
+
+  <bb 3>:
+  id = omp_get_thread_num ();
+  D.2828 = pthread_self ();
+  id_sys = (long int) D.2828;
+  printf ("Thread[%d][%lu]: Código Executado por todas as threads.\n", id, id_sys);
+
+  <bb 4>:
+  D.2830 = __builtin_omp_get_thread_num ();
+  if (D.2830 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 6>:
+
+  <bb 7>:
+
+  <bb 8>:
+  D.2831 = __builtin_GOMP_single_start ();
+  if (D.2831 == 1)
+    goto <bb 9>;
+  else
+    goto <bb 10>;
+
+  <bb 10>:
+  __builtin_GOMP_barrier ();
+
+  <bb 11>:
+  D.2832 = omp_get_thread_num ();
+  if (D.2832 == 3)
+    goto <bb 12>;
+  else
+    goto <bb 13>;
+
+  <bb 13>:
+
+  <bb 14>:
+  __builtin_GOMP_critical_start ();
+  D.2833 = pthread_self ();
+  D.2834 = (long int) D.2833;
+  printf ("Thread[%d][%lu]: Executando a região crítica.\n", id, D.2834);
+  D.2835 = pthread_self ();
+  D.2836 = (long int) D.2835;
+  D.2837 = .omp_data_i->valor;
+  printf ("Thread[%d][%lu]: Antes... valor: %d\n", id, D.2836, D.2837);
+  D.2838 = .omp_data_i->valor;
+  D.2839 = D.2838 + id;
+  .omp_data_i->valor = D.2839;
+  D.2840 = pthread_self ();
+  D.2841 = (long int) D.2840;
+  D.2842 = .omp_data_i->valor;
+  printf ("Thread[%d][%lu]: Depois... valor: %d\n", id, D.2841, D.2842);
+  __builtin_GOMP_critical_end ();
+
+  <bb 15>:
+  D.2843 = pthread_self ();
+  D.2844 = (long int) D.2843;
+  printf ("Thread[%d][%lu]: Barreira.\n", id, D.2844);
+  __builtin_GOMP_barrier ();
+  D.2845 = pthread_self ();
+  D.2846 = (long int) D.2845;
+  printf ("Thread[%d][%lu]: Depois da barreira.\n", id, D.2846);
+  return;
+
+  <bb 12>:
+  D.2847 = pthread_self ();
+  D.2848 = (long int) D.2847;
+  printf ("Thread[%d][%lu]: Código Executado pela thread de id: 3.\n", id, D.2848);
+  goto <bb 13>;
+
+  <bb 9>:
+  D.2849 = pthread_self ();
+  D.2850 = (long int) D.2849;
+  printf ("Thread[%d][%lu]: Código Executado por uma das threads.\n", id, D.2850);
+  goto <bb 10>;
+
+  <bb 5>:
+  D.2851 = pthread_self ();
+  D.2852 = (long int) D.2851;
+  printf ("Thread[%d][%lu]: Código Executado pela thread master.\n", id, D.2852);
+  goto <bb 6>;
+
+}
+
+

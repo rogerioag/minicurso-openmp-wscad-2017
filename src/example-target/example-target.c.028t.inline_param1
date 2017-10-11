@@ -1,0 +1,538 @@
+
+;; Function vecaddgpu._omp_fn.1 (vecaddgpu._omp_fn.1, funcdef_no=6, decl_uid=3646, cgraph_uid=6, symbol_order=10)
+
+
+Analyzing function body size: vecaddgpu._omp_fn.1
+   fp_expression set
+
+Inline summary for vecaddgpu._omp_fn.1/10 fp_expression
+  self time:       69
+  global time:     0
+  self size:       34
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:28.000000, time:47.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    omp_get_thread_num/12 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    omp_get_num_threads/11 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+
+__attribute__((omp declare target))
+vecaddgpu._omp_fn.1 (struct .omp_data_s.9 & restrict .omp_data_i)
+{
+  float D.3709;
+  float * D.3708;
+  long unsigned int D.3707;
+  long unsigned int D.3706;
+  float D.3705;
+  float * D.3704;
+  long unsigned int D.3703;
+  long unsigned int D.3702;
+  float D.3701;
+  float * D.3700;
+  long unsigned int D.3699;
+  long unsigned int D.3698;
+  int i;
+  int D.3696;
+  int D.3695;
+  int D.3694;
+  int tt.20;
+  int q.19;
+  int D.3691;
+  int D.3690;
+  int n.10;
+  int n.6;
+  int n;
+  float * restrict c;
+  float * a;
+  float * b;
+  int q.19_1;
+  int tt.20_2;
+  int n.6_12;
+  int n.10_13;
+  int _14;
+  int _15;
+  int q.19_16;
+  int tt.20_17;
+  int tt.20_18;
+  int q.19_19;
+  int _20;
+  int _21;
+  int _22;
+  long unsigned int _24;
+  long unsigned int _25;
+  float * _26;
+  float _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  float * _30;
+  float _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  float * _34;
+  float _35;
+
+  <bb 2> [0.00%]:
+  b_8 = .omp_data_i_7(D)->b;
+  a_9 = .omp_data_i_7(D)->a;
+  c_10 = .omp_data_i_7(D)->c;
+  n_11 = .omp_data_i_7(D)->n;
+  n.6_12 = n_11;
+  n.10_13 = n.6_12;
+  _14 = omp_get_num_threads ();
+  _15 = omp_get_thread_num ();
+  q.19_16 = n.10_13 / _14;
+  tt.20_17 = n.10_13 % _14;
+  if (_15 < tt.20_17)
+    goto <bb 7>; [25.00%]
+  else
+    goto <bb 3>; [75.00%]
+
+  <bb 3> [0.00%]:
+  # q.19_1 = PHI <q.19_19(7), q.19_16(2)>
+  # tt.20_2 = PHI <tt.20_18(7), tt.20_17(2)>
+  _20 = q.19_1 * _15;
+  _21 = _20 + tt.20_2;
+  _22 = _21 + q.19_1;
+  if (_21 >= _22)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 4> [0.00%]:
+  i_23 = _21;
+
+  <bb 5> [0.00%]:
+  # i_3 = PHI <i_23(4), i_37(5)>
+  _24 = (long unsigned int) i_3;
+  _25 = _24 * 4;
+  _26 = a_9 + _25;
+  _27 = *_26;
+  _28 = (long unsigned int) i_3;
+  _29 = _28 * 4;
+  _30 = b_8 + _29;
+  _31 = *_30;
+  _32 = (long unsigned int) i_3;
+  _33 = _32 * 4;
+  _34 = c_10 + _33;
+  _35 = _27 + _31;
+  *_34 = _35;
+  i_37 = i_3 + 1;
+  if (i_37 < _22)
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 6>; [0.00%]
+
+  <bb 6> [0.00%]:
+  return;
+
+  <bb 7> [0.00%]:
+  tt.20_18 = 0;
+  q.19_19 = q.19_16 + 1;
+  goto <bb 3>; [100.00%]
+
+}
+
+
+
+;; Function vecaddgpu._omp_fn.0 (vecaddgpu._omp_fn.0, funcdef_no=5, decl_uid=3634, cgraph_uid=5, symbol_order=9)
+
+
+Analyzing function body size: vecaddgpu._omp_fn.0
+
+Inline summary for vecaddgpu._omp_fn.0/9
+  self time:       26
+  global time:     0
+  self size:       18
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:11.000000, time:12.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    GOMP_parallel/13 function body not available
+      loop depth: 0 freq:1000 size: 5 time: 14 callee size: 0 stack: 0
+
+__attribute__((omp target entrypoint))
+vecaddgpu._omp_fn.0 (const struct .omp_data_t.8 & restrict .omp_data_i)
+{
+  unsigned int D.3726;
+  _Bool D.3725;
+  struct .omp_data_s.9 .omp_data_o.11;
+  _Bool D.3723;
+  int n.5;
+  float * restrict c;
+  void * D.3720;
+  float * a;
+  void * D.3718;
+  float * b;
+  void * D.3716;
+  int n;
+  int D.3714;
+  unsigned long D.3713;
+  int * D.3712;
+  int * _3;
+  unsigned long _4;
+  int _5;
+  void * _7;
+  void * _9;
+  void * _11;
+  int n.5_13;
+  _Bool _14;
+  _Bool _19;
+  unsigned int _20;
+
+  <bb 17> [0.00%]:
+
+  <bb 4> [0.00%]:
+  _3 = .omp_data_i_2(D)->n;
+  _4 = (unsigned long) _3;
+  _5 = (int) _4;
+  n_6 = _5;
+  _7 = .omp_data_i_2(D)->D.3637;
+  b_8 = _7;
+  _9 = .omp_data_i_2(D)->D.3639;
+  a_10 = _9;
+  _11 = .omp_data_i_2(D)->D.3641;
+  c_12 = _11;
+  n.5_13 = n_6;
+  _14 = n.5_13 > 1024;
+  .omp_data_o.11.b = b_8;
+  .omp_data_o.11.a = a_10;
+  .omp_data_o.11.c = c_12;
+  .omp_data_o.11.n = n_6;
+
+  <bb 16> [0.00%]:
+  _19 = ~_14;
+  _20 = (unsigned int) _19;
+  GOMP_parallel (vecaddgpu._omp_fn.1, &.omp_data_o.11, _20, 0);
+
+  <bb 9> [0.00%]:
+  .omp_data_o.11 ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function vecaddgpu (vecaddgpu, funcdef_no=2, decl_uid=3597, cgraph_uid=2, symbol_order=6)
+
+
+Analyzing function body size: vecaddgpu
+
+Inline summary for vecaddgpu/6
+  self time:       80
+  global time:     0
+  self size:       54
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:35.000000, time:36.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    GOMP_target_end_data/18 function body not available
+      loop depth: 0 freq:1000 size: 1 time: 10 callee size: 0 stack: 0
+    GOMP_target_ext/15 function body not available
+      loop depth: 0 freq:1000 size:10 time: 19 callee size: 0 stack: 0
+    GOMP_target_data_ext/14 function body not available
+      loop depth: 0 freq:1000 size: 6 time: 15 callee size: 0 stack: 0
+
+vecaddgpu (float * restrict c, float * a, float * b)
+{
+  int D.3729;
+  void * .omp_target_args.21[3];
+  int D.3727;
+  _Bool D.3710;
+  unsigned int D.3711;
+  int D.3683;
+  int D.3681;
+  int D.3682;
+  int tt.20;
+  int q.19;
+  int D.3678;
+  int D.3677;
+  int n.10;
+  int i;
+  _Bool D.3613;
+  int n.4;
+  struct .omp_data_t.7 .omp_data_arr.16;
+  long unsigned int .omp_data_sizes.17[3];
+  short unsigned int .omp_data_kinds.18[3];
+  short unsigned int D.3674;
+  short unsigned int D.3675;
+  short unsigned int D.3676;
+  struct .omp_data_t.8 .omp_data_arr.12;
+  static long unsigned int .omp_data_sizes.13[4] = {0, 0, 0, 0};
+  static short unsigned int .omp_data_kinds.14[4] = {15, 15, 15, 525};
+  int n.15;
+  unsigned long D.3663;
+  int * D.3664;
+  int * D.3665;
+  unsigned long D.3666;
+  int D.3667;
+  void * D.3668;
+  void * D.3669;
+  void * D.3670;
+  struct .omp_data_s.9 .omp_data_o.11;
+  int n.0_1;
+  _Bool _2;
+  int n.1_3;
+  sizetype _4;
+  sizetype _5;
+  int n.2_6;
+  sizetype _7;
+  sizetype _8;
+  int n.3_9;
+  sizetype _10;
+  sizetype _11;
+  int _12;
+  int _13;
+  short unsigned int _24;
+  short unsigned int _26;
+  short unsigned int _28;
+  int _30;
+  int _31;
+  int n.4_33;
+  _Bool _34;
+  int n.15_38;
+  unsigned long _39;
+  int * _40;
+  int _42;
+  int _43;
+
+  <bb 2> [0.00%]:
+  n.0_1 = n;
+  _2 = n.0_1 > 1024;
+  n.1_3 = n;
+  _4 = (sizetype) n.1_3;
+  _5 = _4 * 4;
+  n.2_6 = n;
+  _7 = (sizetype) n.2_6;
+  _8 = _7 * 4;
+  n.3_9 = n;
+  _10 = (sizetype) n.3_9;
+  _11 = _10 * 4;
+  .omp_data_arr.16.D.3630 = c_15(D);
+  .omp_data_arr.16.D.3631 = b_17(D);
+  .omp_data_arr.16.D.3632 = a_19(D);
+  .omp_data_sizes.17[0] = _5;
+  .omp_data_sizes.17[1] = _8;
+  .omp_data_sizes.17[2] = _11;
+  _24 = _5 == 0 ? 527 : 514;
+  .omp_data_kinds.18[0] = _24;
+  _26 = _8 == 0 ? 527 : 513;
+  .omp_data_kinds.18[1] = _26;
+  _28 = _11 == 0 ? 527 : 513;
+  .omp_data_kinds.18[2] = _28;
+  if (_2 != 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 3> [0.00%]:
+  _31 = -1;
+  goto <bb 5>; [0.00%]
+
+  <bb 4> [0.00%]:
+  _30 = -2;
+
+  <bb 5> [0.00%]:
+  # _13 = PHI <_31(3), _30(4)>
+  GOMP_target_data_ext (_13, 3, &.omp_data_arr.16, &.omp_data_sizes.17, &.omp_data_kinds.18);
+  n.4_33 = n;
+  _34 = n.4_33 > 1024;
+  .omp_data_arr.12.D.3637 = b_17(D);
+  .omp_data_arr.12.D.3639 = a_19(D);
+  .omp_data_arr.12.D.3641 = c_15(D);
+  n.15_38 = n;
+  _39 = (unsigned long) n.15_38;
+  _40 = (int *) _39;
+  .omp_data_arr.12.n = _40;
+  if (_34 != 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 7>; [0.00%]
+
+  <bb 6> [0.00%]:
+  _43 = -1;
+  goto <bb 8>; [0.00%]
+
+  <bb 7> [0.00%]:
+  _42 = -2;
+
+  <bb 8> [0.00%]:
+  # _12 = PHI <_43(6), _42(7)>
+  .omp_target_args.21[0] = 65792B;
+  .omp_target_args.21[1] = 512B;
+  .omp_target_args.21[2] = 0B;
+  GOMP_target_ext (_12, vecaddgpu._omp_fn.0, 4, &.omp_data_arr.12, &.omp_data_sizes.13, &.omp_data_kinds.14, 0, 0B, &.omp_target_args.21);
+  .omp_data_arr.12 ={v} {CLOBBER};
+  GOMP_target_end_data ();
+  .omp_data_sizes.17 ={v} {CLOBBER};
+  .omp_data_kinds.18 ={v} {CLOBBER};
+  .omp_data_arr.16 ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function init_array (init_array, funcdef_no=3, decl_uid=3600, cgraph_uid=3, symbol_order=7)
+
+
+Analyzing function body size: init_array
+
+Inline summary for init_array/7
+  self time:       29
+  global time:     0
+  self size:       21
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:14.000000, time:15.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    fwrite/20 function body not available
+      loop depth: 0 freq:1000 size: 5 time: 14 callee size: 0 stack: 0
+
+init_array ()
+{
+  int i;
+  struct _IO_FILE * stdout.22_1;
+  float * h_a.23_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  float * _5;
+  float * h_b.24_6;
+  long unsigned int _7;
+  long unsigned int _8;
+  float * _9;
+  int n.25_10;
+
+  <bb 2> [0.00%]:
+  stdout.22_1 = stdout;
+  fwrite ("Inicializando os arrays.\n", 1, 25, stdout.22_1);
+  i_15 = 0;
+  goto <bb 4>; [0.00%]
+
+  <bb 3> [0.00%]:
+  h_a.23_2 = h_a;
+  _3 = (long unsigned int) i_11;
+  _4 = _3 * 4;
+  _5 = h_a.23_2 + _4;
+  *_5 = 5.0e-1;
+  h_b.24_6 = h_b;
+  _7 = (long unsigned int) i_11;
+  _8 = _7 * 4;
+  _9 = h_b.24_6 + _8;
+  *_9 = 5.0e-1;
+  i_18 = i_11 + 1;
+
+  <bb 4> [0.00%]:
+  # i_11 = PHI <i_15(2), i_18(3)>
+  n.25_10 = n;
+  if (i_11 < n.25_10)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 5>; [0.00%]
+
+  <bb 5> [0.00%]:
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=4, decl_uid=3608, cgraph_uid=4, symbol_order=8)
+
+
+Analyzing function body size: main
+
+Inline summary for main/8
+  self time:       88
+  global time:     0
+  self size:       35
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:16.000000, time:17.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    vecaddgpu/6 function not considered for inlining
+      loop depth: 0 freq:1000 size: 4 time: 13 callee size:27 stack: 0
+    init_array/7 function not considered for inlining
+      loop depth: 0 freq:1000 size: 1 time: 10 callee size:10 stack: 0
+    malloc/22 function body not available
+      loop depth: 0 freq:1000 size: 3 time: 12 callee size: 0 stack: 0
+    malloc/22 function body not available
+      loop depth: 0 freq:1000 size: 3 time: 12 callee size: 0 stack: 0
+    malloc/22 function body not available
+      loop depth: 0 freq:1000 size: 3 time: 12 callee size: 0 stack: 0
+    atoi/21 function body not available
+      loop depth: 0 freq:1000 size: 3 time: 12 callee size: 0 stack: 0
+
+main (int argc, char * * argv)
+{
+  int i;
+  int D.3730;
+  char * * _1;
+  char * _2;
+  int _3;
+  int n.26_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  void * _7;
+  int n.27_8;
+  long unsigned int _9;
+  long unsigned int _10;
+  void * _11;
+  int n.28_12;
+  long unsigned int _13;
+  long unsigned int _14;
+  void * _15;
+  float * h_b.29_16;
+  float * h_a.30_17;
+  float * h_c.31_18;
+  int _30;
+
+  <bb 2> [0.00%]:
+  _1 = argv_19(D) + 8;
+  _2 = *_1;
+  _3 = atoi (_2);
+  n = _3;
+  n.26_4 = n;
+  _5 = (long unsigned int) n.26_4;
+  _6 = _5 * 4;
+  _7 = malloc (_6);
+  h_a = _7;
+  n.27_8 = n;
+  _9 = (long unsigned int) n.27_8;
+  _10 = _9 * 4;
+  _11 = malloc (_10);
+  h_b = _11;
+  n.28_12 = n;
+  _13 = (long unsigned int) n.28_12;
+  _14 = _13 * 4;
+  _15 = malloc (_14);
+  h_c = _15;
+  init_array ();
+  h_b.29_16 = h_b;
+  h_a.30_17 = h_a;
+  h_c.31_18 = h_c;
+  vecaddgpu (h_c.31_18, h_a.30_17, h_b.29_16);
+  _30 = 0;
+
+<L0> [0.00%]:
+  return _30;
+
+}
+
+

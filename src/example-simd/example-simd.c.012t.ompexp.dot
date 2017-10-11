@@ -1,0 +1,92 @@
+digraph "example-simd.c.012t.ompexp" {
+overlap=false;
+subgraph "main" {
+	color="black";
+	label="main";
+	subgraph cluster_3_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_3_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|if\ (i\ \<\ 1048576)\l\
+\ \ goto\ \<bb\ 3\>;\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\l\
+}"];
+
+	fn_3_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|D.3383\ =\ h_c[i];\l\
+|D.3384\ =\ h_a[i];\l\
+|D.3385\ =\ h_b[i];\l\
+|D.3386\ =\ D.3384\ *\ D.3385;\l\
+|D.3387\ =\ D.3383\ +\ D.3386;\l\
+|h_c[i]\ =\ D.3387;\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_3_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_3_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_3_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|init_array\ ();\l\
+|D.3378\ =\ pthread_self\ ();\l\
+|D.3379\ =\ (long\ int)\ D.3378;\l\
+|D.3380\ =\ omp_get_thread_num\ ();\l\
+|D.3381\ =\ (long\ int)\ D.3380;\l\
+|stdout.1\ =\ stdout;\l\
+|fprintf\ (stdout.1,\ \"Thread[%lu,%lu]:\ Antes\ do\ simd.\n\",\ D.3381,\ D.3379);\l\
+|i\ =\ 0;\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 4\>;\l\
+}"];
+
+	fn_3_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|if\ (i\ ==\ 1048576)\l\
+\ \ goto\ \<bb\ 6\>;\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\l\
+}"];
+
+	fn_3_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 6\>:\l\
+|i\ =\ i;\l\
+}"];
+
+	fn_3_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 7\>:\l\
+|D.3388\ =\ pthread_self\ ();\l\
+|D.3389\ =\ (long\ int)\ D.3388;\l\
+|D.3390\ =\ omp_get_thread_num\ ();\l\
+|D.3391\ =\ (long\ int)\ D.3390;\l\
+|stdout.2\ =\ stdout;\l\
+|fprintf\ (stdout.2,\ \"Thread[%lu,%lu]:\ Depois\ do\ simd.\n\",\ D.3391,\ D.3389);\l\
+|D.3393\ =\ pthread_self\ ();\l\
+|D.3394\ =\ (long\ int)\ D.3393;\l\
+|D.3395\ =\ omp_get_thread_num\ ();\l\
+|D.3396\ =\ (long\ int)\ D.3395;\l\
+|stdout.3\ =\ stdout;\l\
+|fprintf\ (stdout.3,\ \"Thread[%lu,%lu]:\ res:\ %g\n\",\ D.3396,\ D.3394,\ res);\l\
+|D.3398\ =\ 0;\l\
+}"];
+
+	fn_3_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 8\>:\l\
+|\<L2\>:\l\
+|return\ D.3398;\l\
+}"];
+
+	fn_3_basic_block_0:s -> fn_3_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_2:s -> fn_3_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_3:s -> fn_3_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false, label="[100%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[87%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true, label="[12%]"];
+	fn_3_basic_block_5:s -> fn_3_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_5:s -> fn_3_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_6:s -> fn_3_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_7:s -> fn_3_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_8:s -> fn_3_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_0:s -> fn_3_basic_block_1:n [style="invis",constraint=true];
+}
+}

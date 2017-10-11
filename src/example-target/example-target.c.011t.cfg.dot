@@ -1,0 +1,245 @@
+digraph "example-target.c.011t.cfg" {
+overlap=false;
+subgraph "cluster_vecaddgpu" {
+	style="dashed";
+	color="black";
+	label="vecaddgpu ()";
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|n.0_1\ =\ n;\l\
+|_2\ =\ n.0_1\ \>\ 1024;\l\
+|n.1_3\ =\ n;\l\
+|_4\ =\ (sizetype)\ n.1_3;\l\
+|_5\ =\ _4\ *\ 4;\l\
+|n.2_6\ =\ n;\l\
+|_7\ =\ (sizetype)\ n.2_6;\l\
+|_8\ =\ _7\ *\ 4;\l\
+|n.3_9\ =\ n;\l\
+|_10\ =\ (sizetype)\ n.3_9;\l\
+|_11\ =\ _10\ *\ 4;\l\
+|.omp_data_arr.16.D.3630\ =\ c;\l\
+|.omp_data_arr.16.D.3631\ =\ b;\l\
+|.omp_data_arr.16.D.3632\ =\ a;\l\
+|.omp_data_sizes.17[0]\ =\ _5;\l\
+|.omp_data_sizes.17[1]\ =\ _8;\l\
+|.omp_data_sizes.17[2]\ =\ _11;\l\
+|D.3674\ =\ _5\ ==\ 0\ ?\ 527\ :\ 514;\l\
+|.omp_data_kinds.18[0]\ =\ D.3674;\l\
+|D.3675\ =\ _8\ ==\ 0\ ?\ 527\ :\ 513;\l\
+|.omp_data_kinds.18[1]\ =\ D.3675;\l\
+|D.3676\ =\ _11\ ==\ 0\ ?\ 527\ :\ 513;\l\
+|.omp_data_kinds.18[2]\ =\ D.3676;\l\
+|#pragma\ omp\ target\ data\ if(_2)\ map(from:*c\ [len:\ _5])\ map(to:*b\ [len:\ _8])\ map(to:*a\ [len:\ _11])\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|n.4\ =\ n;\l\
+|D.3613\ =\ n.4\ \>\ 1024;\l\
+|.omp_data_arr.12.D.3637\ =\ b;\l\
+|.omp_data_arr.12.D.3639\ =\ a;\l\
+|.omp_data_arr.12.D.3641\ =\ c;\l\
+|n.15\ =\ n;\l\
+|D.3663\ =\ (unsigned\ long)\ n.15;\l\
+|D.3664\ =\ (int\ *)\ D.3663;\l\
+|.omp_data_arr.12.n\ =\ D.3664;\l\
+|#pragma\ omp\ target\ num_teams(1)\ thread_limit(0)\ if(D.3613)\ map(alloc:MEM[(char\ *)b]\ [len:\ 0])\ map(firstprivate:b\ [pointer\ assign,\ bias:\ 0])\ map(alloc:MEM[(char\ *)a]\ [len:\ 0])\ map(firstprivate:a\ [pointer\ assign,\ bias:\ 0])\ map(alloc:MEM[(char\ *)c]\ [len:\ 0])\ map(firstprivate:c\ [pointer\ assign,\ bias:\ 0])\ firstprivate(n)\ [child\ fn:\ vecaddgpu._omp_fn.0\ (.omp_data_arr.12,\ .omp_data_sizes.13,\ .omp_data_kinds.14)]\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|.omp_data_i\ =\ (const\ struct\ .omp_data_t.8\ &\ restrict)\ &.omp_data_arr.12;\l\
+|D.3665\ =\ .omp_data_i-\>n;\l\
+|D.3666\ =\ (unsigned\ long)\ D.3665;\l\
+|D.3667\ =\ (int)\ D.3666;\l\
+|n\ =\ D.3667;\l\
+|D.3668\ =\ .omp_data_i-\>D.3637;\l\
+|b\ =\ D.3668;\l\
+|D.3669\ =\ .omp_data_i-\>D.3639;\l\
+|a\ =\ D.3669;\l\
+|D.3670\ =\ .omp_data_i-\>D.3641;\l\
+|c\ =\ D.3670;\l\
+|n.5\ =\ n;\l\
+|D.3615\ =\ n.5\ \>\ 1024;\l\
+|.omp_data_o.11.b\ =\ b;\l\
+|.omp_data_o.11.a\ =\ a;\l\
+|.omp_data_o.11.c\ =\ c;\l\
+|.omp_data_o.11.n\ =\ n;\l\
+|#pragma\ omp\ parallel\ if(D.3615)\ firstprivate(b)\ firstprivate(a)\ firstprivate(c)\ firstprivate(n)\ [child\ fn:\ vecaddgpu._omp_fn.1\ (.omp_data_o.11)]\l\
+}"];
+
+	fn_2_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|.omp_data_i\ =\ (struct\ .omp_data_s.9\ &\ restrict)\ &.omp_data_o.11;\l\
+|b\ =\ .omp_data_i-\>b;\l\
+|a\ =\ .omp_data_i-\>a;\l\
+|c\ =\ .omp_data_i-\>c;\l\
+|n\ =\ .omp_data_i-\>n;\l\
+|n.6\ =\ n;\l\
+|n.10\ =\ n.6;\l\
+|#pragma\ omp\ for\ nowait\l\
+for\ (i\ =\ 0;\ i\ \<\ n.10;\ i\ =\ i\ +\ 1)\l\
+}"];
+
+	fn_2_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 6\>:\l\
+|D.3617\ =\ (long\ unsigned\ int)\ i;\l\
+|D.3618\ =\ D.3617\ *\ 4;\l\
+|D.3619\ =\ a\ +\ D.3618;\l\
+|D.3620\ =\ *D.3619;\l\
+|D.3621\ =\ (long\ unsigned\ int)\ i;\l\
+|D.3622\ =\ D.3621\ *\ 4;\l\
+|D.3623\ =\ b\ +\ D.3622;\l\
+|D.3624\ =\ *D.3623;\l\
+|D.3625\ =\ (long\ unsigned\ int)\ i;\l\
+|D.3626\ =\ D.3625\ *\ 4;\l\
+|D.3627\ =\ c\ +\ D.3626;\l\
+|D.3628\ =\ D.3620\ +\ D.3624;\l\
+|*D.3627\ =\ D.3628;\l\
+|#pragma\ omp\ continue\ (i,\ i)\l\
+}"];
+
+	fn_2_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 7\>:\l\
+|#pragma\ omp\ return(nowait)\l\
+}"];
+
+	fn_2_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 8\>:\l\
+|#pragma\ omp\ return\l\
+}"];
+
+	fn_2_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 9\>:\l\
+|.omp_data_o.11\ =\ \{CLOBBER\};\l\
+|#pragma\ omp\ return\l\
+}"];
+
+	fn_2_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 10\>:\l\
+|.omp_data_arr.12\ =\ \{CLOBBER\};\l\
+|__builtin_GOMP_target_end_data\ ();\l\
+|#pragma\ omp\ return\l\
+}"];
+
+	fn_2_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 11\>:\l\
+|.omp_data_sizes.17\ =\ \{CLOBBER\};\l\
+|.omp_data_kinds.18\ =\ \{CLOBBER\};\l\
+|.omp_data_arr.16\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_3:s -> fn_2_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_4:s -> fn_2_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_5:s -> fn_2_basic_block_6:n [style="solid,bold",color=red,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_5:s -> fn_2_basic_block_7:n [style="solid,bold",color=red,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_6:s -> fn_2_basic_block_6:n [style="dotted,bold",color=red,weight=10,constraint=false, label="[0%]"];
+	fn_2_basic_block_6:s -> fn_2_basic_block_7:n [style="solid,bold",color=red,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_7:s -> fn_2_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_8:s -> fn_2_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_9:s -> fn_2_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_10:s -> fn_2_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_11:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_init_array" {
+	style="dashed";
+	color="black";
+	label="init_array ()";
+	subgraph cluster_3_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_3_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 4\>:\l\
+|n.25_10\ =\ n;\l\
+|if\ (i\ \<\ n.25_10)\l\
+\ \ goto\ \<bb\ 3\>;\ [0.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [0.00%]\l\
+}"];
+
+	fn_3_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|h_a.23_2\ =\ h_a;\l\
+|_3\ =\ (long\ unsigned\ int)\ i;\l\
+|_4\ =\ _3\ *\ 4;\l\
+|_5\ =\ h_a.23_2\ +\ _4;\l\
+|*_5\ =\ 5.0e-1;\l\
+|h_b.24_6\ =\ h_b;\l\
+|_7\ =\ (long\ unsigned\ int)\ i;\l\
+|_8\ =\ _7\ *\ 4;\l\
+|_9\ =\ h_b.24_6\ +\ _8;\l\
+|*_9\ =\ 5.0e-1;\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_3_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_3_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_3_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|stdout.22_1\ =\ stdout;\l\
+|__builtin_fwrite\ (\"Inicializando\ os\ arrays.\\n\",\ 1,\ 25,\ stdout.22_1);\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 4\>;\ [0.00%]\l\
+}"];
+
+	fn_3_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 5\>:\l\
+|return;\l\
+}"];
+
+	fn_3_basic_block_0:s -> fn_3_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_2:s -> fn_3_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_3_basic_block_3:s -> fn_3_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false, label="[0%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_4:s -> fn_3_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_5:s -> fn_3_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_3_basic_block_0:s -> fn_3_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_4_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_4_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_4_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 2\>:\l\
+|_1\ =\ argv\ +\ 8;\l\
+|_2\ =\ *_1;\l\
+|_3\ =\ atoi\ (_2);\l\
+|n\ =\ _3;\l\
+|n.26_4\ =\ n;\l\
+|_5\ =\ (long\ unsigned\ int)\ n.26_4;\l\
+|_6\ =\ _5\ *\ 4;\l\
+|_7\ =\ malloc\ (_6);\l\
+|h_a\ =\ _7;\l\
+|n.27_8\ =\ n;\l\
+|_9\ =\ (long\ unsigned\ int)\ n.27_8;\l\
+|_10\ =\ _9\ *\ 4;\l\
+|_11\ =\ malloc\ (_10);\l\
+|h_b\ =\ _11;\l\
+|n.28_12\ =\ n;\l\
+|_13\ =\ (long\ unsigned\ int)\ n.28_12;\l\
+|_14\ =\ _13\ *\ 4;\l\
+|_15\ =\ malloc\ (_14);\l\
+|h_c\ =\ _15;\l\
+|init_array\ ();\l\
+|h_b.29_16\ =\ h_b;\l\
+|h_a.30_17\ =\ h_a;\l\
+|h_c.31_18\ =\ h_c;\l\
+|vecaddgpu\ (h_c.31_18,\ h_a.30_17,\ h_b.29_16);\l\
+|D.3730\ =\ 0;\l\
+}"];
+
+	fn_4_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 3\>:\l\
+|\<L0\>\ [0.00%]:\l\
+|return\ D.3730;\l\
+}"];
+
+	fn_4_basic_block_0:s -> fn_4_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_4_basic_block_2:s -> fn_4_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_4_basic_block_3:s -> fn_4_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_4_basic_block_0:s -> fn_4_basic_block_1:n [style="invis",constraint=true];
+}
+}

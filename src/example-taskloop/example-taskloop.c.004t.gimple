@@ -1,0 +1,139 @@
+func ()
+{
+  long unsigned int D.3565;
+  long int D.3566;
+  int D.3567;
+  struct _IO_FILE * stdout.0;
+  int i;
+  int j;
+
+  D.3565 = pthread_self ();
+  D.3566 = (long int) D.3565;
+  D.3567 = omp_get_thread_num ();
+  stdout.0 = stdout;
+  fprintf (stdout.0, "Thread[%lu,%lu]: taskloop...\n", D.3567, D.3566);
+  #pragma omp taskloop grainsize(2) num_tasks(8)
+  for (i = 0; i <= 15; i = i + 1)
+    {
+      {
+        #pragma omp taskloop private(j) private(i)
+          {
+            #pragma omp taskloop
+            for (i = 0; i <= 15; i = i + 1)
+              {
+                {
+                  long unsigned int D.3569;
+                  long int D.3570;
+                  int D.3571;
+                  struct _IO_FILE * stdout.1;
+
+                  j = 0;
+                  goto <D.3558>;
+                  <D.3557>:
+                  D.3569 = pthread_self ();
+                  D.3570 = (long int) D.3569;
+                  D.3571 = omp_get_thread_num ();
+                  stdout.1 = stdout;
+                  fprintf (stdout.1, "Thread[%lu,%lu]: Trabalhando na iteração (%d,%d).\n", D.3571, D.3570, i, j);
+                  j = j + 1;
+                  <D.3558>:
+                  if (j < i) goto <D.3557>; else goto <D.3559>;
+                  <D.3559>:
+                }
+              }
+          }
+      }
+    }
+}
+
+
+main (int argc, char * * argv)
+{
+  long unsigned int D.3601;
+  long int D.3602;
+  int D.3603;
+  long int D.3604;
+  struct _IO_FILE * stdout.4;
+  long unsigned int D.3619;
+  long int D.3620;
+  int D.3621;
+  long int D.3622;
+  struct _IO_FILE * stdout.8;
+  int D.3624;
+
+  {
+    D.3601 = pthread_self ();
+    D.3602 = (long int) D.3601;
+    D.3603 = omp_get_thread_num ();
+    D.3604 = (long int) D.3603;
+    stdout.4 = stdout;
+    fprintf (stdout.4, "Thread[%lu,%lu]: Before parallel region.\n", D.3604, D.3602);
+    #pragma omp parallel num_threads(4)
+      {
+        long unsigned int D.3606;
+        long int D.3607;
+        int D.3608;
+        long int D.3609;
+        struct _IO_FILE * stdout.5;
+
+        #pragma omp single
+          {
+            D.3606 = pthread_self ();
+            D.3607 = (long int) D.3606;
+            D.3608 = omp_get_thread_num ();
+            D.3609 = (long int) D.3608;
+            stdout.5 = stdout;
+            fprintf (stdout.5, "  Thread[%lu,%lu]: Before tasks.\n", D.3609, D.3607);
+            #pragma omp taskgroup
+              {
+                try
+                  {
+                    #pragma omp task
+                      {
+                        long unsigned int D.3611;
+                        long int D.3612;
+                        int D.3613;
+                        struct _IO_FILE * stdout.6;
+
+                        D.3611 = pthread_self ();
+                        D.3612 = (long int) D.3611;
+                        D.3613 = omp_get_thread_num ();
+                        stdout.6 = stdout;
+                        fprintf (stdout.6, "Thread[%lu,%lu]: Trabalhando na task avulsa.\n", D.3613, D.3612);
+                      }
+                    #pragma omp task
+                      {
+                        long unsigned int D.3615;
+                        long int D.3616;
+                        int D.3617;
+                        struct _IO_FILE * stdout.7;
+
+                        D.3615 = pthread_self ();
+                        D.3616 = (long int) D.3615;
+                        D.3617 = omp_get_thread_num ();
+                        stdout.7 = stdout;
+                        fprintf (stdout.7, "Thread[%lu,%lu]: Trabalhando na task func().\n", D.3617, D.3616);
+                        func ();
+                      }
+                  }
+                finally
+                  {
+                    __builtin_GOMP_taskgroup_end ();
+                  }
+              }
+          }
+      }
+    D.3619 = pthread_self ();
+    D.3620 = (long int) D.3619;
+    D.3621 = omp_get_thread_num ();
+    D.3622 = (long int) D.3621;
+    stdout.8 = stdout;
+    fprintf (stdout.8, "Thread[%lu,%lu]: After parallel region.\n", D.3622, D.3620);
+    D.3624 = 0;
+    return D.3624;
+  }
+  D.3624 = 0;
+  return D.3624;
+}
+
+

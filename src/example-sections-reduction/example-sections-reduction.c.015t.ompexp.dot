@@ -1,0 +1,187 @@
+digraph "example-sections-reduction.c.015t.ompexp" {
+overlap=false;
+subgraph "main" {
+	color="black";
+	label="main";
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|sum\ =\ 0;\l\
+|D.2704\ =\ pthread_self\ ();\l\
+|D.2705\ =\ (long\ int)\ D.2704;\l\
+|D.2706\ =\ omp_get_thread_num\ ();\l\
+|stdout.0\ =\ stdout;\l\
+|fprintf\ (stdout.0,\ \"Thread[%d][%lu]:\ Antes\ da\ Região\ Paralela.\n\",\ D.2706,\ D.2705);\l\
+|.omp_data_o.7.i\ =\ i;\l\
+|.omp_data_o.7.sum\ =\ sum;\l\
+|__builtin_GOMP_parallel_start\ (main._omp_fn.0,\ &.omp_data_o.7,\ 8);\l\
+|main._omp_fn.0\ (&.omp_data_o.7);\l\
+|__builtin_GOMP_parallel_end\ ();\l\
+|i\ =\ .omp_data_o.7.i;\l\
+|sum\ =\ .omp_data_o.7.sum;\l\
+|D.2714\ =\ pthread_self\ ();\l\
+|D.2715\ =\ (long\ int)\ D.2714;\l\
+|D.2716\ =\ omp_get_thread_num\ ();\l\
+|stdout.3\ =\ stdout;\l\
+|fprintf\ (stdout.3,\ \"Thread[%d][%lu]:\ Depois\ da\ Região\ Paralela.\n\",\ D.2716,\ D.2715);\l\
+|D.2718\ =\ pthread_self\ ();\l\
+|D.2719\ =\ (long\ int)\ D.2718;\l\
+|D.2720\ =\ omp_get_thread_num\ ();\l\
+|stdout.4\ =\ stdout;\l\
+|fprintf\ (stdout.4,\ \"Thread[%d][%lu]:\ sum:\ %d\n\",\ D.2720,\ D.2719,\ sum);\l\
+|D.2722\ =\ 0;\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|\<L6\>:\l\
+|return\ D.2722;\l\
+}"];
+
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_2_basic_block_3:s -> fn_2_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "main._omp_fn.0" {
+	color="black";
+	label="main._omp_fn.0";
+	fn_3_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_3_basic_block_23 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 23\>:\l\
+}"];
+
+	fn_3_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|id\ =\ omp_get_thread_num\ ();\l\
+|sum\ =\ 0;\l\
+|.section.6\ =\ __builtin_GOMP_sections_start\ (2);\l\
+}"];
+
+	fn_3_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|switch\ (.section.6)\ \<default:\ \<L10\>,\ case\ 0:\ \<L7\>,\ case\ 1:\ \<L8\>,\ case\ 2:\ \<L9\>\>\l\
+}"];
+
+	fn_3_basic_block_22 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 22\>:\l\
+|\<L10\>:\l\
+|__builtin_trap\ ();\l\
+}"];
+
+	fn_3_basic_block_16 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 16\>:\l\
+|\<L7\>:\l\
+|D.2761\ =\ &.omp_data_i-\>sum;\l\
+|sum.8\ =\ (unsigned\ int)\ sum;\l\
+|__atomic_fetch_add_4\ (D.2761,\ sum.8,\ 0);\l\
+}"];
+
+	fn_3_basic_block_17 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 17\>:\l\
+}"];
+
+	fn_3_basic_block_18 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 18\>:\l\
+|__builtin_GOMP_sections_end_nowait\ ();\l\
+}"];
+
+	fn_3_basic_block_19 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 19\>:\l\
+|return;\l\
+}"];
+
+	fn_3_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|\<L8\>:\l\
+}"];
+
+	fn_3_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|D.2770\ =\ pthread_self\ ();\l\
+|D.2771\ =\ (long\ int)\ D.2770;\l\
+|stdout.1\ =\ stdout;\l\
+|fprintf\ (stdout.1,\ \"\ \ \ Thread[%lu,%lu]:\ Trabalhando\ na\ seção\ 1.\n\",\ id,\ D.2771);\l\
+|.omp_data_i-\>i\ =\ 0;\l\
+}"];
+
+	fn_3_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|D.2773\ =\ .omp_data_i-\>i;\l\
+|if\ (D.2773\ \<=\ 1023)\l\
+\ \ goto\ \<bb\ 7\>;\l\
+else\l\
+\ \ goto\ \<bb\ 9\>;\l\
+}"];
+
+	fn_3_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+goto\ \<bb\ 15\>;\l\
+}"];
+
+	fn_3_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|D.2774\ =\ .omp_data_i-\>i;\l\
+|sum\ =\ sum\ +\ D.2774;\l\
+|D.2775\ =\ .omp_data_i-\>i;\l\
+|D.2776\ =\ D.2775\ +\ 1;\l\
+|.omp_data_i-\>i\ =\ D.2776;\l\
+goto\ \<bb\ 8\>;\l\
+}"];
+
+	fn_3_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L9\>:\l\
+}"];
+
+	fn_3_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|D.2763\ =\ pthread_self\ ();\l\
+|D.2764\ =\ (long\ int)\ D.2763;\l\
+|stdout.2\ =\ stdout;\l\
+|fprintf\ (stdout.2,\ \"\ \ \ Thread[%lu,%lu]:\ Trabalhando\ na\ seção\ 2.\n\",\ id,\ D.2764);\l\
+|.omp_data_i-\>i\ =\ 0;\l\
+}"];
+
+	fn_3_basic_block_13 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 13\>:\l\
+|D.2766\ =\ .omp_data_i-\>i;\l\
+|if\ (D.2766\ \<=\ 1023)\l\
+\ \ goto\ \<bb\ 12\>;\l\
+else\l\
+\ \ goto\ \<bb\ 14\>;\l\
+}"];
+
+	fn_3_basic_block_14 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 14\>:\l\
+goto\ \<bb\ 15\>;\l\
+}"];
+
+	fn_3_basic_block_15 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 15\>:\l\
+|.section.6\ =\ __builtin_GOMP_sections_next\ ();\l\
+goto\ \<bb\ 4\>;\l\
+}"];
+
+	fn_3_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|D.2767\ =\ .omp_data_i-\>i;\l\
+|sum\ =\ sum\ +\ D.2767;\l\
+|D.2768\ =\ .omp_data_i-\>i;\l\
+|D.2769\ =\ D.2768\ +\ 1;\l\
+|.omp_data_i-\>i\ =\ D.2769;\l\
+goto\ \<bb\ 13\>;\l\
+}"];
+
+	fn_3_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_3_basic_block_0:s -> fn_3_basic_block_23:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_23:s -> fn_3_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_3:s -> fn_3_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_16:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_4:s -> fn_3_basic_block_22:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_16:s -> fn_3_basic_block_17:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_17:s -> fn_3_basic_block_18:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_18:s -> fn_3_basic_block_19:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_19:s -> fn_3_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_15:s -> fn_3_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_3_basic_block_10:s -> fn_3_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_11:s -> fn_3_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_13:s -> fn_3_basic_block_12:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_13:s -> fn_3_basic_block_14:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_14:s -> fn_3_basic_block_15:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_12:s -> fn_3_basic_block_13:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_3_basic_block_5:s -> fn_3_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_6:s -> fn_3_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_8:s -> fn_3_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_8:s -> fn_3_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_3_basic_block_9:s -> fn_3_basic_block_15:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_3_basic_block_7:s -> fn_3_basic_block_8:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_3_basic_block_0:s -> fn_3_basic_block_1:n [style="invis",constraint=true];
+}
+}

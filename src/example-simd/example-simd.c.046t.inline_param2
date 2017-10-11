@@ -1,0 +1,194 @@
+
+;; Function init_array (init_array, funcdef_no=2, decl_uid=3556, cgraph_uid=2, symbol_order=5)
+
+
+Analyzing function body size: init_array
+
+Inline summary for init_array/5
+  self time:       22
+  global time:     0
+  self size:       14
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:7.000000, time:8.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    __builtin_fwrite/8 function body not available
+      loop depth: 0 freq:1000 size: 5 time: 14 callee size: 0 stack: 0
+
+init_array ()
+{
+  int i;
+  struct _IO_FILE * stdout.0;
+  struct _IO_FILE * stdout.0_4;
+
+  <bb 2>:
+  stdout.0_4 = stdout;
+  __builtin_fwrite ("Inicializando os arrays.\n", 1, 25, stdout.0_4);
+  i_6 = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  h_a[i_1] = 5.0e-1;
+  h_b[i_1] = 5.0e-1;
+  i_9 = i_1 + 1;
+
+  <bb 4>:
+  # i_1 = PHI <i_6(2), i_9(3)>
+  if (i_1 <= 1048575)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=3, decl_uid=3564, cgraph_uid=3, symbol_order=6)
+
+
+Analyzing function body size: main
+
+Inline summary for main/6
+  self time:       135
+  global time:     0
+  self size:       46
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:15.000000, time:16.000000, predicate:(true)
+    size:2.000000, time:0.000000, predicate:(not inlined)
+  calls:
+    fprintf/11 function body not available
+      loop depth: 0 freq:1000 size: 6 time: 15 callee size: 0 stack: 0
+    omp_get_thread_num/10 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    pthread_self/9 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    fprintf/11 function body not available
+      loop depth: 0 freq:1000 size: 5 time: 14 callee size: 0 stack: 0
+    omp_get_thread_num/10 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    pthread_self/9 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    fprintf/11 function body not available
+      loop depth: 0 freq:1000 size: 5 time: 14 callee size: 0 stack: 0
+    omp_get_thread_num/10 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    pthread_self/9 function body not available
+      loop depth: 0 freq:1000 size: 2 time: 11 callee size: 0 stack: 0
+    init_array/5 function not considered for inlining
+      loop depth: 0 freq:1000 size: 1 time: 10 callee size: 7 stack: 0
+
+main (int argc, char * * argv)
+{
+  int i;
+  double res;
+  int i;
+  int D.3590;
+  struct _IO_FILE * stdout.3;
+  long int D.3588;
+  int D.3587;
+  long int D.3586;
+  long unsigned int D.3585;
+  struct _IO_FILE * stdout.2;
+  long int D.3583;
+  int D.3582;
+  long int D.3581;
+  long unsigned int D.3580;
+  double D.3579;
+  double D.3578;
+  double D.3577;
+  double D.3576;
+  double D.3575;
+  struct _IO_FILE * stdout.1;
+  long int D.3573;
+  int D.3572;
+  long int D.3571;
+  long unsigned int D.3570;
+  long unsigned int _5;
+  long int _6;
+  int _8;
+  long int _9;
+  struct _IO_FILE * stdout.1_10;
+  double _14;
+  double _15;
+  double _16;
+  double _17;
+  double _18;
+  long unsigned int _22;
+  long int _23;
+  int _25;
+  long int _26;
+  struct _IO_FILE * stdout.2_27;
+  long unsigned int _29;
+  long int _30;
+  int _32;
+  long int _33;
+  struct _IO_FILE * stdout.3_34;
+  int _37;
+
+  <bb 2>:
+  init_array ();
+  _5 = pthread_self ();
+  _6 = (long int) _5;
+  _8 = omp_get_thread_num ();
+  _9 = (long int) _8;
+  stdout.1_10 = stdout;
+  fprintf (stdout.1_10, "Thread[%lu,%lu]: Antes do simd.\n", _9, _6);
+  i_12 = 0;
+  i_13 = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  _14 = h_c[i_1];
+  _15 = h_a[i_1];
+  _16 = h_b[i_1];
+  _17 = _15 * _16;
+  _18 = _14 + _17;
+  h_c[i_1] = _18;
+  i_20 = i_1 + 1;
+
+  <bb 4>:
+  # i_1 = PHI <i_20(3), i_13(2)>
+  if (i_1 < 1048576)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  if (i_1 == 1048576)
+    goto <bb 6>;
+  else
+    goto <bb 7>;
+
+  <bb 6>:
+  i_21 = i_1;
+
+  <bb 7>:
+  _22 = pthread_self ();
+  _23 = (long int) _22;
+  _25 = omp_get_thread_num ();
+  _26 = (long int) _25;
+  stdout.2_27 = stdout;
+  fprintf (stdout.2_27, "Thread[%lu,%lu]: Depois do simd.\n", _26, _23);
+  _29 = pthread_self ();
+  _30 = (long int) _29;
+  _32 = omp_get_thread_num ();
+  _33 = (long int) _32;
+  stdout.3_34 = stdout;
+  fprintf (stdout.3_34, "Thread[%lu,%lu]: res: %g\n", _33, _30, res_35(D));
+  _37 = 0;
+
+<L2>:
+  return _37;
+
+}
+
+

@@ -1,0 +1,252 @@
+
+;; Function init_array (init_array, funcdef_no=2, decl_uid=3556, cgraph_uid=2, symbol_order=5)
+
+init_array ()
+{
+  int i;
+  struct _IO_FILE * stdout.0;
+
+  <bb 2>:
+  stdout.0 = stdout;
+  __builtin_fwrite ("Inicializando os arrays.\n", 1, 25, stdout.0);
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  h_a[i] = 5.0e-1;
+  h_b[i] = 5.0e-1;
+  i = i + 1;
+
+  <bb 4>:
+  if (i <= 1048575)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+
+;; Function print_array (print_array, funcdef_no=3, decl_uid=3562, cgraph_uid=3, symbol_order=6)
+
+print_array ()
+{
+  int i;
+  struct _IO_FILE * stdout.1;
+  double D.3582;
+
+  <bb 2>:
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.3582 = h_c[i];
+  stdout.1 = stdout;
+  fprintf (stdout.1, "h_c[%07d]: %f\n", i, D.3582);
+  i = i + 1;
+
+  <bb 4>:
+  if (i <= 1048575)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+
+;; Function check_result (check_result, funcdef_no=4, decl_uid=3568, cgraph_uid=4, symbol_order=7)
+
+check_result ()
+{
+  double sum;
+  int i;
+  struct _IO_FILE * stdout.3;
+  double D.3586;
+  double D.3585;
+  struct _IO_FILE * stdout.2;
+
+  <bb 2>:
+  sum = 0.0;
+  stdout.2 = stdout;
+  __builtin_fwrite ("Verificando o resultado.\n", 1, 25, stdout.2);
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.3585 = h_c[i];
+  sum = D.3585 + sum;
+  i = i + 1;
+
+  <bb 4>:
+  if (i <= 1048575)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  D.3586 = sum / 1.048576e+6;
+  stdout.3 = stdout;
+  fprintf (stdout.3, "Resultado Final: (%f, %f)\n", sum, D.3586);
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=5, decl_uid=3577, cgraph_uid=5, symbol_order=8)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_for
+        bb 4: gimple_omp_for
+        bb 5: GIMPLE_OMP_CONTINUE
+        bb 8: GIMPLE_OMP_RETURN
+    bb 9: GIMPLE_OMP_CONTINUE
+    bb 12: GIMPLE_OMP_RETURN
+bb 13: GIMPLE_OMP_RETURN
+
+Added new low gimple function main._omp_fn.0 to callgraph
+Introduced new external node (__builtin_GOMP_loop_dynamic_next/13).
+Introduced new external node (__builtin_GOMP_loop_end_nowait/14).
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=6, decl_uid=3594, cgraph_uid=8, symbol_order=12)
+
+main._omp_fn.0 (struct .omp_data_s.5 & restrict .omp_data_i)
+{
+  int i.4;
+  int i;
+  _Bool D.3629;
+  double D.3628;
+  double D.3627;
+  double D.3626;
+  int i;
+  int D.3624;
+  int D.3623;
+  long int .iend0.10;
+  int D.3621;
+  long int .istart0.9;
+  _Bool D.3619;
+  long int .iend0.8;
+  long int .istart0.7;
+  int i.4;
+
+  <bb 19>:
+
+  <bb 3>:
+  i.4 = 0;
+  D.3619 = __builtin_GOMP_loop_dynamic_next (&.istart0.7, &.iend0.8);
+  if (D.3619 != 0)
+    goto <bb 17>;
+  else
+    goto <bb 10>;
+
+  <bb 17>:
+  .istart0.9 = .istart0.7;
+  D.3621 = (int) .istart0.9;
+  .iend0.10 = .iend0.8;
+  D.3623 = (int) .iend0.10;
+  D.3624 = D.3623;
+  i.4 = D.3623;
+
+  <bb 4>:
+  i = 0;
+  i = D.3621;
+
+  <bb 16>:
+  if (i < D.3624)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  D.3626 = h_a[i];
+  D.3627 = h_b[i];
+  D.3628 = D.3626 * D.3627;
+  h_c[i] = D.3628;
+  i = i + 1;
+  goto <bb 16>;
+
+  <bb 6>:
+  if (i == 1048576)
+    goto <bb 7>;
+  else
+    goto <bb 8>;
+
+  <bb 8>:
+
+  <bb 9>:
+
+  <bb 18>:
+  D.3629 = __builtin_GOMP_loop_dynamic_next (&.istart0.7, &.iend0.8);
+  if (D.3629 != 0)
+    goto <bb 17>;
+  else
+    goto <bb 10>;
+
+  <bb 7>:
+  i = i;
+  goto <bb 8>;
+
+  <bb 10>:
+  if (i.4 == 1048576)
+    goto <bb 11>;
+  else
+    goto <bb 12>;
+
+  <bb 12>:
+  __builtin_GOMP_loop_end_nowait ();
+
+  <bb 13>:
+  return;
+
+  <bb 11>:
+  .omp_data_i->i = i;
+  goto <bb 12>;
+
+}
+
+
+
+;; Function main (main, funcdef_no=5, decl_uid=3577, cgraph_uid=5, symbol_order=8)
+
+Merging blocks 2 and 20
+Merging blocks 2 and 14
+main (int argc, char * * argv)
+{
+  _Bool D.3615;
+  long int .iend0.10;
+  int D.3614;
+  long int .istart0.9;
+  _Bool D.3611;
+  long int .iend0.8;
+  long int .istart0.7;
+  int i;
+  int D.3602;
+  int D.3601;
+  int i.4;
+  int i;
+  int D.3592;
+  struct .omp_data_s.5 .omp_data_o.6;
+
+  <bb 2>:
+  init_array ();
+  __builtin_GOMP_parallel_loop_dynamic (main._omp_fn.0, &.omp_data_o.6, 4, 0, 1048576, 1, 32, 0);
+  i = .omp_data_o.6.i;
+  .omp_data_o.6 = {CLOBBER};
+  D.3592 = 0;
+
+<L4>:
+  return D.3592;
+
+}
+
+

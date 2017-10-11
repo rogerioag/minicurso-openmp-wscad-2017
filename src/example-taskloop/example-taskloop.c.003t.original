@@ -1,0 +1,81 @@
+
+;; Function __bswap_32 (null)
+;; enabled by -tree-original
+
+
+{
+  return __builtin_bswap32 (__bsx);
+}
+
+
+;; Function __bswap_64 (null)
+;; enabled by -tree-original
+
+
+{
+  return (__uint64_t) __builtin_bswap64 (__bsx);
+}
+
+
+;; Function func (null)
+;; enabled by -tree-original
+
+
+{
+  int i;
+  int j;
+
+    int i;
+    int j;
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: taskloop...\n", omp_get_thread_num (), (long int) pthread_self ());
+  #pragma omp taskloop grainsize(2) private(j) num_tasks(8)
+  for (i = 0; i <= 15; i++ )
+    {
+      j = 0;
+      goto <D.3558>;
+      <D.3557>:;
+      fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Trabalhando na iteração (%d,%d).\n", omp_get_thread_num (), (long int) pthread_self (), i, j);
+      j++ ;
+      <D.3558>:;
+      if (j < i) goto <D.3557>; else goto <D.3559>;
+      <D.3559>:;
+    }
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Before parallel region.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+  #pragma omp parallel num_threads(4)
+    {
+      {
+        #pragma omp single
+          {
+            fprintf ((struct FILE * restrict) stdout, (const char * restrict) "  Thread[%lu,%lu]: Before tasks.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+            #pragma omp taskgroup
+              {
+                #pragma omp task
+                  {
+                    {
+                      fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Trabalhando na task avulsa.\n", omp_get_thread_num (), (long int) pthread_self ());
+                    }
+                  }
+                #pragma omp task
+                  {
+                    {
+                      fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Trabalhando na task func().\n", omp_get_thread_num (), (long int) pthread_self ());
+                      func ();
+                    }
+                  }
+              }
+          }
+      }
+    }
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: After parallel region.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+  return 0;
+}
+return 0;
+

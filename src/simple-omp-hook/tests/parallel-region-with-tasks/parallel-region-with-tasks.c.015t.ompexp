@@ -1,0 +1,226 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=3319, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 4: gimple_omp_parallel
+    bb 5: gimple_omp_single
+        bb 11: gimple_omp_task
+        bb 12: GIMPLE_OMP_RETURN
+        bb 9: gimple_omp_task
+        bb 10: GIMPLE_OMP_RETURN
+        bb 7: gimple_omp_task
+        bb 8: GIMPLE_OMP_RETURN
+    bb 13: GIMPLE_OMP_RETURN
+bb 14: GIMPLE_OMP_RETURN
+
+Merging blocks 4 and 24
+Merging blocks 4 and 15
+main (int argc, char * * argv)
+{
+  _Bool D.3387;
+  int x;
+  int id;
+  int D.3364;
+  struct _IO_FILE * stdout.9;
+  int D.3362;
+  long int D.3361;
+  long unsigned int D.3360;
+  struct _IO_FILE * stdout.1;
+  int D.3332;
+  long int D.3331;
+  long unsigned int D.3330;
+  char * D.3329;
+  char * * D.3328;
+  struct _IO_FILE * stderr.0;
+  char * D.3326;
+  struct .omp_data_s.10 .omp_data_o.15;
+
+  <bb 2>:
+  if (argc <= 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+  <bb 3>:
+  D.3326 = *argv;
+  stderr.0 = stderr;
+  fprintf (stderr.0, "Uso: %s <x>\n", D.3326);
+  exit (0);
+
+  <bb 4>:
+  id = 0;
+  D.3328 = argv + 8;
+  D.3329 = *D.3328;
+  x = atoi (D.3329);
+  D.3330 = pthread_self ();
+  D.3331 = (long int) D.3330;
+  D.3332 = omp_get_thread_num ();
+  stdout.1 = stdout;
+  fprintf (stdout.1, "Thread[%lu,%lu]: Antes da região paralela.\n", D.3332, D.3331);
+  .omp_data_o.15.x = x;
+  __builtin_GOMP_parallel_start (main._omp_fn.0, &.omp_data_o.15, 4);
+  main._omp_fn.0 (&.omp_data_o.15);
+  __builtin_GOMP_parallel_end ();
+  D.3360 = pthread_self ();
+  D.3361 = (long int) D.3360;
+  D.3362 = omp_get_thread_num ();
+  stdout.9 = stdout;
+  fprintf (stdout.9, "Thread[%lu,%lu]: Depois da região paralela.\n", D.3362, D.3361);
+  D.3364 = 0;
+
+<L4>:
+  return D.3364;
+
+}
+
+
+
+;; Function main._omp_fn.3 (main._omp_fn.3, funcdef_no=6, decl_uid=3382, cgraph_uid=13)
+
+main._omp_fn.3 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.8;
+  int D.3392;
+  long int D.3391;
+  long unsigned int D.3390;
+
+  <bb 17>:
+
+  <bb 12>:
+  D.3390 = pthread_self ();
+  D.3391 = (long int) D.3390;
+  D.3392 = omp_get_thread_num ();
+  stdout.8 = stdout;
+  fprintf (stdout.8, "    Thread[%lu,%lu]: Trabalhando na task 3.\n", D.3392, D.3391);
+  return;
+
+}
+
+
+
+;; Function main._omp_fn.2 (main._omp_fn.2, funcdef_no=5, decl_uid=3378, cgraph_uid=11)
+
+main._omp_fn.2 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.5;
+  int D.3396;
+  long int D.3395;
+  long unsigned int D.3394;
+
+  <bb 19>:
+
+  <bb 10>:
+  D.3394 = pthread_self ();
+  D.3395 = (long int) D.3394;
+  D.3396 = omp_get_thread_num ();
+  stdout.5 = stdout;
+  fprintf (stdout.5, "    Thread[%lu,%lu]: Trabalhando na task 2.\n", D.3396, D.3395);
+  return;
+
+}
+
+
+
+;; Function main._omp_fn.1 (main._omp_fn.1, funcdef_no=4, decl_uid=3374, cgraph_uid=10)
+
+main._omp_fn.1 (void * .omp_data_i)
+{
+  struct _IO_FILE * stdout.4;
+  int D.3400;
+  long int D.3399;
+  long unsigned int D.3398;
+
+  <bb 21>:
+
+  <bb 8>:
+  D.3398 = pthread_self ();
+  D.3399 = (long int) D.3398;
+  D.3400 = omp_get_thread_num ();
+  stdout.4 = stdout;
+  fprintf (stdout.4, "    Thread[%lu,%lu]: Trabalhando na task 1.\n", D.3400, D.3399);
+  return;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=3366, cgraph_uid=8)
+
+main._omp_fn.0 (struct .omp_data_s.10 * .omp_data_i)
+{
+  struct _IO_FILE * stdout.7;
+  long int D.3417;
+  long unsigned int D.3416;
+  struct _IO_FILE * stdout.6;
+  long int D.3414;
+  long unsigned int D.3413;
+  _Bool D.3412;
+  _Bool D.3411;
+  struct _IO_FILE * stdout.3;
+  long int D.3409;
+  long unsigned int D.3408;
+  _Bool D.3407;
+  struct _IO_FILE * stdout.2;
+  long int D.3405;
+  long unsigned int D.3404;
+  int id;
+  int x;
+
+  <bb 23>:
+
+  <bb 5>:
+  x = .omp_data_i->x;
+  id = omp_get_thread_num ();
+  D.3404 = pthread_self ();
+  D.3405 = (long int) D.3404;
+  stdout.2 = stdout;
+  fprintf (stdout.2, "  Thread[%lu,%lu]: Todas as threads executam.\n", id, D.3405);
+
+  <bb 6>:
+  D.3407 = __builtin_GOMP_single_start ();
+  if (D.3407 == 1)
+    goto <bb 7>;
+  else
+    goto <bb 13>;
+
+  <bb 13>:
+
+  <bb 14>:
+  return;
+
+  <bb 7>:
+  D.3408 = pthread_self ();
+  D.3409 = (long int) D.3408;
+  stdout.3 = stdout;
+  fprintf (stdout.3, "  Thread[%lu,%lu]: Antes de criar tasks.\n", id, D.3409);
+  D.3411 = x > 10;
+
+  <bb 22>:
+  __builtin_GOMP_task (main._omp_fn.1, 0B, 0B, 0, 1, D.3411, 0);
+
+  <bb 9>:
+  D.3412 = x > 20;
+
+  <bb 20>:
+  __builtin_GOMP_task (main._omp_fn.2, 0B, 0B, 0, 1, D.3412, 0);
+
+  <bb 11>:
+  D.3413 = pthread_self ();
+  D.3414 = (long int) D.3413;
+  stdout.6 = stdout;
+  fprintf (stdout.6, "    Thread[%lu,%lu]: Antes do taskwait.\n", id, D.3414);
+  __builtin_GOMP_taskwait ();
+  D.3416 = pthread_self ();
+  D.3417 = (long int) D.3416;
+  stdout.7 = stdout;
+  fprintf (stdout.7, "    Thread[%lu,%lu]: Depois do taskwait.\n", id, D.3417);
+
+  <bb 18>:
+  __builtin_GOMP_task (main._omp_fn.3, 0B, 0B, 0, 1, 1, 0);
+  goto <bb 13>;
+
+}
+
+
