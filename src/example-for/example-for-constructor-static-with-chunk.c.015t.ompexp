@@ -1,0 +1,120 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=2764, cgraph_uid=2)
+
+
+OMP region tree
+
+bb 2: gimple_omp_parallel
+    bb 3: gimple_omp_for
+    bb 4: GIMPLE_OMP_CONTINUE
+    bb 5: GIMPLE_OMP_RETURN
+bb 6: GIMPLE_OMP_RETURN
+
+Merging blocks 2 and 13
+Merging blocks 2 and 7
+main ()
+{
+  int D.2794;
+  int D.2795;
+  int D.2791;
+  int D.2792;
+  int D.2793;
+  int D.2790;
+  int .trip.1;
+  int D.2788;
+  int D.2787;
+  int i;
+  int i;
+  int id;
+  int D.2779;
+  int D.2778;
+  long int D.2777;
+  int D.2776;
+  int D.2773;
+  long int D.2772;
+  int D.2771;
+
+  <bb 2>:
+  D.2771 = pthread_self ();
+  D.2772 = (long int) D.2771;
+  D.2773 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Antes da Região Paralela.\n", D.2773, D.2772);
+  __builtin_GOMP_parallel_start (main._omp_fn.0, 0B, 4);
+  main._omp_fn.0 (0B);
+  __builtin_GOMP_parallel_end ();
+  D.2776 = pthread_self ();
+  D.2777 = (long int) D.2776;
+  D.2778 = omp_get_thread_num ();
+  printf ("Thread[%d][%lu]: Depois da Região Paralela.\n", D.2778, D.2777);
+  D.2779 = 0;
+
+<L0>:
+  return D.2779;
+
+}
+
+
+
+;; Function main._omp_fn.0 (main._omp_fn.0, funcdef_no=3, decl_uid=2781, cgraph_uid=6)
+
+main._omp_fn.0 (void * .omp_data_i)
+{
+  long int D.2808;
+  int D.2807;
+  int i;
+  int D.2805;
+  int D.2804;
+  int D.2803;
+  int D.2802;
+  int D.2801;
+  int D.2800;
+  int .trip.1;
+  int D.2798;
+  int D.2797;
+  int id;
+
+  <bb 12>:
+
+  <bb 3>:
+  id = omp_get_thread_num ();
+  D.2797 = __builtin_omp_get_num_threads ();
+  D.2798 = __builtin_omp_get_thread_num ();
+  .trip.1 = 0;
+  D.2800 = D.2798 * 2;
+
+  <bb 9>:
+  D.2801 = .trip.1 * D.2797;
+  D.2802 = D.2801 + D.2798;
+  D.2803 = D.2802 * 2;
+  D.2804 = D.2803 + 2;
+  D.2805 = MIN_EXPR <D.2804, 16>;
+  if (D.2803 < 16)
+    goto <bb 10>;
+  else
+    goto <bb 5>;
+
+  <bb 10>:
+  i = D.2803;
+
+  <bb 4>:
+  D.2807 = pthread_self ();
+  D.2808 = (long int) D.2807;
+  printf ("Thread[%d][%lu]: Trabalhando na iteração %lu.\n", id, D.2808, i);
+  i = i + 1;
+  if (i < D.2805)
+    goto <bb 4>;
+  else
+    goto <bb 11>;
+
+  <bb 11>:
+  .trip.1 = .trip.1 + 1;
+  goto <bb 9>;
+
+  <bb 5>:
+
+  <bb 6>:
+  return;
+
+}
+
+

@@ -48,13 +48,13 @@
 
 
 {
-  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Before parallel region.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Antes da Região Paralela.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
   #pragma omp parallel num_threads(4)
     {
       {
         #pragma omp single
           {
-            fprintf ((struct FILE * restrict) stdout, (const char * restrict) "  Thread[%lu,%lu]: Before tasks.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+            fprintf ((struct FILE * restrict) stdout, (const char * restrict) "  Thread[%lu,%lu]: Antes das tasks.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
             #pragma omp taskgroup
               {
                 #pragma omp task
@@ -74,7 +74,7 @@
           }
       }
     }
-  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: After parallel region.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
+  fprintf ((struct FILE * restrict) stdout, (const char * restrict) "Thread[%lu,%lu]: Depois da Região Paralela.\n", (long int) omp_get_thread_num (), (long int) pthread_self ());
   return 0;
 }
 return 0;

@@ -45,10 +45,10 @@ func:
 	.section	.rodata
 	.align 8
 .LC1:
-	.string	"Thread[%lu,%lu]: Before parallel region.\n"
+	.string	"Thread[%lu,%lu]: Antes da Regi\303\243o Paralela.\n"
 	.align 8
 .LC2:
-	.string	"Thread[%lu,%lu]: After parallel region.\n"
+	.string	"Thread[%lu,%lu]: Depois da Regi\303\243o Paralela.\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -147,7 +147,7 @@ func._omp_fn.0:
 	.section	.rodata
 	.align 8
 .LC4:
-	.string	"  Thread[%lu,%lu]: Before tasks.\n"
+	.string	"  Thread[%lu,%lu]: Antes das tasks.\n"
 	.text
 	.type	main._omp_fn.1, @function
 main._omp_fn.1:

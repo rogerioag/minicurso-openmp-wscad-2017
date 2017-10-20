@@ -13430,13 +13430,13 @@
                          link: extern  
 @7084   tree_list        valu: @3       chan: @7102   
 @7085   pointer_type     size: @22      algn: 64       ptd : @7103   
-@7086   string_cst       type: @7103   strg: Thread[%lu,%lu]: Before parallel region.
-  lngt: 42      
+@7086   string_cst       type: @7103   strg: Thread[%lu,%lu]: Antes da Região Paralela.
+  lngt: 45      
 @7087   addr_expr        type: @7062    op 0: @6510   
 @7088   addr_expr        type: @7078    op 0: @5482   
 @7089   pointer_type     size: @22      algn: 64       ptd : @7104   
-@7090   string_cst       type: @7104   strg: Thread[%lu,%lu]: After parallel region.
-  lngt: 41      
+@7090   string_cst       type: @7104   strg: Thread[%lu,%lu]: Depois da Região Paralela.
+  lngt: 46      
 @7091   addr_expr        type: @7062    op 0: @6510   
 @7092   addr_expr        type: @7078    op 0: @5482   
 @7093   integer_cst      type: @11     int: 240
@@ -13469,10 +13469,10 @@
                          scpe: @155     srcp: <built-in>:0      
                          chain: @7117    body: undefined 
                          link: extern  
-@7109   integer_cst      type: @11     int: 336
+@7109   integer_cst      type: @11     int: 360
 @7110   integer_type     size: @22      algn: 64       prec: 64      
                          sign: signed   min : @143     max : @7118   
-@7111   integer_cst      type: @11     int: 328
+@7111   integer_cst      type: @11     int: 368
 @7112   integer_type     size: @22      algn: 64       prec: 64      
                          sign: signed   min : @143     max : @7119   
 @7113   identifier_node  strg: __builtin_ia32_rsqrtps_nr 
@@ -13485,8 +13485,8 @@
 @7117   function_decl    name: @7116    type: @948     srcp: <built-in>:0      
                          chain: @7122    body: undefined 
                          link: extern  
-@7118   integer_cst      type: @151    int: 41
-@7119   integer_cst      type: @151    int: 40
+@7118   integer_cst      type: @151    int: 44
+@7119   integer_cst      type: @151    int: 45
 @7120   identifier_node  strg: __builtin_ia32_rcpps    lngt: 20      
 @7121   function_decl    name: @7123    type: @7124    scpe: @155    
                          srcp: <built-in>:0            chain: @7125   

@@ -124,7 +124,7 @@ subgraph "cluster_main" {
 |D.3603\ =\ omp_get_thread_num\ ();\l\
 |D.3604\ =\ (long\ int)\ D.3603;\l\
 |stdout.4\ =\ stdout;\l\
-|fprintf\ (stdout.4,\ \"Thread[%lu,%lu]:\ Before\ parallel\ region.\n\",\ D.3604,\ D.3602);\l\
+|fprintf\ (stdout.4,\ \"Thread[%lu,%lu]:\ Antes\ da\ Região\ Paralela.\n\",\ D.3604,\ D.3602);\l\
 |#pragma\ omp\ parallel\ num_threads(4)\ [child\ fn:\ main._omp_fn.1\ (???)]\l\
 }"];
 
@@ -146,7 +146,7 @@ else\l\
 |D.3608\ =\ omp_get_thread_num\ ();\l\
 |D.3609\ =\ (long\ int)\ D.3608;\l\
 |stdout.5\ =\ stdout;\l\
-|fprintf\ (stdout.5,\ \"\ \ Thread[%lu,%lu]:\ Before\ tasks.\n\",\ D.3609,\ D.3607);\l\
+|fprintf\ (stdout.5,\ \"\ \ Thread[%lu,%lu]:\ Antes\ das\ tasks.\n\",\ D.3609,\ D.3607);\l\
 |#pragma\ omp\ taskgroup\l\
 }"];
 
@@ -205,7 +205,7 @@ else\l\
 |D.3621\ =\ omp_get_thread_num\ ();\l\
 |D.3622\ =\ (long\ int)\ D.3621;\l\
 |stdout.8\ =\ stdout;\l\
-|fprintf\ (stdout.8,\ \"Thread[%lu,%lu]:\ After\ parallel\ region.\n\",\ D.3622,\ D.3620);\l\
+|fprintf\ (stdout.8,\ \"Thread[%lu,%lu]:\ Depois\ da\ Região\ Paralela.\n\",\ D.3622,\ D.3620);\l\
 |D.3624\ =\ 0;\l\
 }"];
 

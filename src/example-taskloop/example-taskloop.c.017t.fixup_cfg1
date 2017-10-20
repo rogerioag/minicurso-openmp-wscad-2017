@@ -113,7 +113,7 @@ main._omp_fn.1 (void * .omp_data_i)
   D.3653 = omp_get_thread_num ();
   D.3654 = (long int) D.3653;
   stdout.5 = stdout;
-  fprintf (stdout.5, "  Thread[%lu,%lu]: Before tasks.\n", D.3654, D.3652);
+  fprintf (stdout.5, "  Thread[%lu,%lu]: Antes das tasks.\n", D.3654, D.3652);
 
   <bb 6>:
   __builtin_GOMP_taskgroup_start ();
@@ -221,14 +221,14 @@ main (int argc, char * * argv)
   D.3603 = omp_get_thread_num ();
   D.3604 = (long int) D.3603;
   stdout.4 = stdout;
-  fprintf (stdout.4, "Thread[%lu,%lu]: Before parallel region.\n", D.3604, D.3602);
+  fprintf (stdout.4, "Thread[%lu,%lu]: Antes da Região Paralela.\n", D.3604, D.3602);
   __builtin_GOMP_parallel (main._omp_fn.1, 0B, 4, 0);
   D.3619 = pthread_self ();
   D.3620 = (long int) D.3619;
   D.3621 = omp_get_thread_num ();
   D.3622 = (long int) D.3621;
   stdout.8 = stdout;
-  fprintf (stdout.8, "Thread[%lu,%lu]: After parallel region.\n", D.3622, D.3620);
+  fprintf (stdout.8, "Thread[%lu,%lu]: Depois da Região Paralela.\n", D.3622, D.3620);
   D.3624 = 0;
 
 <L2>:

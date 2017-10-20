@@ -146,7 +146,7 @@ else\l\
 |_8\ =\ omp_get_thread_num\ ();\l\
 |_9\ =\ (long\ int)\ _8;\l\
 |stdout.5_10\ =\ stdout;\l\
-|fprintf\ (stdout.5_10,\ \"\ \ Thread[%lu,%lu]:\ Before\ tasks.\n\",\ _9,\ _6);\l\
+|fprintf\ (stdout.5_10,\ \"\ \ Thread[%lu,%lu]:\ Antes\ das\ tasks.\n\",\ _9,\ _6);\l\
 }"];
 
 	fn_5_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\<bb\ 6\>:\l\
@@ -257,14 +257,14 @@ subgraph "cluster_main" {
 |_5\ =\ omp_get_thread_num\ ();\l\
 |_6\ =\ (long\ int)\ _5;\l\
 |stdout.4_7\ =\ stdout;\l\
-|fprintf\ (stdout.4_7,\ \"Thread[%lu,%lu]:\ Before\ parallel\ region.\n\",\ _6,\ _2);\l\
+|fprintf\ (stdout.4_7,\ \"Thread[%lu,%lu]:\ Antes\ da\ Região\ Paralela.\n\",\ _6,\ _2);\l\
 |__builtin_GOMP_parallel\ (main._omp_fn.1,\ 0B,\ 4,\ 0);\l\
 |_10\ =\ pthread_self\ ();\l\
 |_11\ =\ (long\ int)\ _10;\l\
 |_13\ =\ omp_get_thread_num\ ();\l\
 |_14\ =\ (long\ int)\ _13;\l\
 |stdout.8_15\ =\ stdout;\l\
-|fprintf\ (stdout.8_15,\ \"Thread[%lu,%lu]:\ After\ parallel\ region.\n\",\ _14,\ _11);\l\
+|fprintf\ (stdout.8_15,\ \"Thread[%lu,%lu]:\ Depois\ da\ Região\ Paralela.\n\",\ _14,\ _11);\l\
 |_17\ =\ 0;\l\
 }"];
 
